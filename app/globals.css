@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* Light Luxury Palette - Expanded */
+  --bg-primary: #FDFCFA;
+  --bg-secondary: #F5F3EF;
+  --bg-dark: #1A1815;
+  --bg-darker: #0F0E0C;
+
+  /* Primary Accents */
+  --accent-warm: #D4841A;
+  --accent-warm-light: #E9A94D;
+  --accent-coral: #E85A4F;
+  --accent-coral-light: #F07B72;
+  --accent-sage: #5A7D52;
+  --accent-sage-light: #7A9D72;
+
+  /* Extended Palette */
+  --accent-navy: #2C3E50;
+  --accent-navy-light: #3D566E;
+  --accent-purple: #8E44AD;
+  --accent-purple-light: #A569BD;
+  --accent-teal: #16A085;
+  --accent-teal-light: #1ABC9C;
+  --accent-gold: #C9A227;
+
+  /* Text Colors */
+  --text-primary: #1A1815;
+  --text-muted: #6B6560;
+  --text-light: #F5F3EF;
+  --text-light-muted: rgba(245, 243, 239, 0.7);
+
+  /* Borders */
+  --border-subtle: rgba(212, 132, 26, 0.2);
+  --border-light: rgba(245, 243, 239, 0.15);
+
+  /* Gradients */
+  --gradient-ambient: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(212, 132, 26, 0.08) 0%, transparent 60%);
+  --gradient-mesh:
+    radial-gradient(at 40% 20%, rgba(212, 132, 26, 0.06) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, rgba(232, 90, 79, 0.05) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, rgba(90, 125, 82, 0.04) 0px, transparent 50%);
+
+  /* Typography */
+  --font-display: 'Syne', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+
+  --background: var(--bg-primary);
+  --foreground: var(--text-primary);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-display);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-display);
+  overflow-x: hidden;
+}
+
+/* Custom animations */
+@keyframes float-slow {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(2deg);
+  }
+}
+
+@keyframes float-delayed {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-15px) rotate(-1.5deg);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    filter: blur(60px);
+  }
+
+  50% {
+    opacity: 0.5;
+    filter: blur(80px);
+  }
+}
+
+@keyframes grain {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  10% {
+    transform: translate(-5%, -10%);
+  }
+
+  20% {
+    transform: translate(-15%, 5%);
+  }
+
+  30% {
+    transform: translate(7%, -25%);
+  }
+
+  40% {
+    transform: translate(-5%, 25%);
+  }
+
+  50% {
+    transform: translate(-15%, 10%);
+  }
+
+  60% {
+    transform: translate(15%, 0%);
+  }
+
+  70% {
+    transform: translate(0%, 15%);
+  }
+
+  80% {
+    transform: translate(3%, 35%);
+  }
+
+  90% {
+    transform: translate(-10%, 10%);
+  }
+}
+
+@keyframes slide-up-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes line-draw {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes border-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(212, 132, 26, 0.15), inset 0 0 20px rgba(212, 132, 26, 0.03);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(212, 132, 26, 0.25), inset 0 0 30px rgba(212, 132, 26, 0.05);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 10s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 6s ease-in-out infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up-fade 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-right {
+  animation: slide-in-right 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-line-draw {
+  animation: line-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-border-glow {
+  animation: border-glow 4s ease-in-out infinite;
+}
+
+/* Grain overlay - subtle for light theme */
+.grain-overlay::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200%;
+  background: transparent url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.015'/%3E%3C/svg%3E") repeat;
+  animation: grain 8s steps(10) infinite;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-warm);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c07618;
+}
