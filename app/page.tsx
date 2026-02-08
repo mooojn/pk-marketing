@@ -1,166 +1,23 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
 
   useEffect(() => {
     setIsLoaded(true);
-
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <div className="grain-overlay">
 
-      {/* Navbar */}
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isLoaded ? 'animate-slide-up' : 'opacity-0'}`}
-        style={{
-          background: isScrolled ? 'rgba(253, 252, 250, 0.95)' : 'transparent',
-          backdropFilter: isScrolled ? 'blur(20px)' : 'none',
-          borderBottom: isScrolled ? '1px solid var(--border-subtle)' : '1px solid transparent',
-          animationDelay: '0.1s'
-        }}
-      >
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center justify-between h-20">
 
-            {/* Logo */}
-            <a
-              href="#"
-              className="flex items-center gap-3 transition-all duration-300"
-              onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
-              onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
-            >
-              <div
-                className="w-10 h-10 flex items-center justify-center rounded-lg"
-                style={{
-                  border: '2px solid var(--accent-warm)',
-                  color: 'var(--accent-warm)'
-                }}
-              >
-                <span className="text-lg font-bold" style={{ fontFamily: 'var(--font-display)' }}>A</span>
-              </div>
-              <span
-                className="text-xl font-bold hidden sm:block"
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  color: 'var(--text-primary)'
-                }}
-              >
-                Adzzly
-              </span>
-            </a>
+      {/* Navbar - Removed (Moved to Layout) */}
+      <div className={`transition-all duration-500 ${isLoaded ? 'animate-slide-up' : 'opacity-0'}`} />
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-10">
-              {['Home', 'About', 'Services', 'Contact'].map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="relative text-base font-medium transition-all duration-300"
-                  style={{
-                    fontFamily: 'var(--font-display)',
-                    color: 'var(--text-muted)'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = 'var(--accent-warm)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = 'var(--text-muted)';
-                  }}
-                >
-                  {item}
-                </a>
-              ))}
-            </div>
-
-            {/* CTA Button */}
-            <div className="hidden md:block">
-              <button
-                className="px-6 py-3 text-xs tracking-[0.15em] uppercase font-semibold transition-all duration-300"
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  background: 'var(--accent-warm)',
-                  color: '#FFFFFF',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'var(--accent-coral)';
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'var(--accent-warm)';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                }}
-              >
-                Get Started
-              </button>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden p-2"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              style={{ color: 'var(--text-primary)' }}
-            >
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                {isMobileMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
-          </div>
-
-          {/* Mobile Menu */}
-          {isMobileMenuOpen && (
-            <div
-              className="md:hidden py-6 border-t"
-              style={{
-                borderColor: 'var(--border-subtle)',
-                background: 'var(--bg-primary)'
-              }}
-            >
-              <div className="flex flex-col gap-4">
-                {['Home', 'About', 'Services', 'Contact'].map((item) => (
-                  <a
-                    key={item}
-                    href={`#${item.toLowerCase()}`}
-                    className="text-sm tracking-wider uppercase py-2 transition-all duration-300"
-                    style={{
-                      fontFamily: 'var(--font-mono)',
-                      color: 'var(--text-muted)'
-                    }}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item}
-                  </a>
-                ))}
-                <button
-                  className="mt-4 px-6 py-3 text-xs tracking-[0.15em] uppercase font-semibold w-full"
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    background: 'var(--accent-warm)',
-                    color: '#FFFFFF',
-                  }}
-                >
-                  Get Started
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
-      </nav>
 
       {/* Hero Section */}
       <section className="relative min-h-screen overflow-hidden" style={{ background: 'var(--bg-primary)' }}>
