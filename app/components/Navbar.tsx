@@ -66,7 +66,7 @@ export default function Navbar() {
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center gap-10">
-                        {navItems.map((item) => {
+                        {navItems.filter(item => item.name !== 'Services' || pathname === '/').map((item) => {
                             const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href) && item.href !== '/#services');
 
                             return (
@@ -138,7 +138,7 @@ export default function Navbar() {
                 {isMobileMenuOpen && (
                     <div className="md:hidden py-6 border-t" style={{ borderColor: 'var(--border-subtle)', background: 'var(--bg-primary)' }}>
                         <div className="flex flex-col gap-4">
-                            {navItems.map((item) => {
+                            {navItems.filter(item => item.name !== 'Services' || pathname === '/').map((item) => {
                                 const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href) && item.href !== '/#services');
 
                                 return (

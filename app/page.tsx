@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Pricing from "./components/Pricing";
+import DetailedServices from "./components/DetailedServices";
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -355,6 +357,7 @@ export default function Home() {
 
       {/* Services Section */}
       <section
+        id="services"
         className="relative py-24 lg:py-32 overflow-hidden"
         style={{ background: 'var(--bg-secondary)' }}
       >
@@ -762,6 +765,10 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <DetailedServices />
+
+      <Pricing />
 
       {/* Footer */}
       <footer
