@@ -5,6 +5,7 @@ import Link from "next/link";
 import Pricing from "./components/Pricing";
 import DetailedServices from "./components/DetailedServices";
 import BrandSlider from "./components/BrandSlider";
+import Testimonials from "./components/Testimonials";
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -773,6 +774,9 @@ export default function Home() {
       <DetailedServices />
 
       <Pricing />
+
+      {/* Testimonials */}
+      <Testimonials />
 
       {/* Footer */}
       <footer
