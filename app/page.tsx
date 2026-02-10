@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Pricing from "./components/Pricing";
 import DetailedServices from "./components/DetailedServices";
+import BrandSlider from "./components/BrandSlider";
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -354,6 +355,9 @@ export default function Home() {
         </div>
 
       </section>
+
+      {/* Brand Slider */}
+      <BrandSlider />
 
       {/* Services Section */}
       <section
