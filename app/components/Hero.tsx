@@ -116,7 +116,7 @@ export default function Hero() {
                     </div>
 
                     {/* Center - Main Content */}
-                    <div className="flex-1 flex flex-col justify-center px-6 sm:px-8 lg:px-20 xl:px-32 py-12 lg:py-20">
+                    <div className="flex-1 flex flex-col justify-center px-6 sm:px-8 lg:px-20 xl:px-32 py-12 lg:py-20 lg:pb-32">
 
                         {/* Eyebrow */}
                         <div
@@ -194,7 +194,7 @@ export default function Hero() {
 
                         {/* CTA Buttons */}
                         <div
-                            className={`flex flex-col sm:flex-row gap-4 sm:gap-6 ${isLoaded ? 'animate-slide-up' : 'opacity-0'}`}
+                            className={`mb-4 flex flex-col sm:flex-row gap-4 sm:gap-6 ${isLoaded ? 'animate-slide-up' : 'opacity-0'}`}
                             style={{ animationDelay: '0.7s' }}
                         >
                             {/* Primary CTA */}
@@ -250,41 +250,7 @@ export default function Hero() {
                             </button>
                         </div>
 
-                        {/* Trust Indicators */}
-                        <div
-                            className={`flex flex-wrap items-center gap-8 mt-16 pt-8 ${isLoaded ? 'animate-slide-up' : 'opacity-0'}`}
-                            style={{
-                                borderTop: '1px solid var(--border-subtle)',
-                                animationDelay: '0.9s'
-                            }}
-                        >
-                            {[
-                                { number: '150+', label: 'Projects Delivered' },
-                                { number: '98%', label: 'Client Satisfaction' },
-                                { number: '12', label: 'Industry Awards' }
-                            ].map((stat, i) => (
-                                <div key={i} className="flex flex-col">
-                                    <span
-                                        className="text-3xl font-bold"
-                                        style={{
-                                            fontFamily: 'var(--font-display)',
-                                            color: 'var(--accent-warm)'
-                                        }}
-                                    >
-                                        {stat.number}
-                                    </span>
-                                    <span
-                                        className="text-xs tracking-wider uppercase"
-                                        style={{
-                                            fontFamily: 'var(--font-mono)',
-                                            color: 'var(--text-muted)'
-                                        }}
-                                    >
-                                        {stat.label}
-                                    </span>
-                                </div>
-                            ))}
-                        </div>
+
                     </div>
 
                     {/* Right Side - Decorative Panel */}
@@ -306,43 +272,48 @@ export default function Hero() {
                             }}
                         />
 
-                        {/* Version Badge */}
-                        <div
-                            className="absolute bottom-12 right-8 px-4 py-2"
-                            style={{
-                                border: '1px solid var(--border-subtle)',
-                                fontFamily: 'var(--font-mono)',
-                                fontSize: '10px',
-                                letterSpacing: '0.2em',
-                                color: 'var(--text-muted)',
-                                background: 'rgba(255, 255, 255, 0.6)'
-                            }}
-                        >
-                            V2.0.24
-                        </div>
                     </div>
                 </div>
 
-                {/* Bottom Scroll Indicator */}
+                {/* Full Width Metrics Bar */}
                 <div
-                    className={`absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 ${isLoaded ? 'animate-slide-up' : 'opacity-0'}`}
-                    style={{ animationDelay: '1.1s' }}
+                    className={`absolute bottom-0 left-0 w-full py-8 backdrop-blur-md ${isLoaded ? 'animate-slide-up' : 'opacity-0'}`}
+                    style={{
+                        background: 'var(--accent-warm)',
+                        animationDelay: '1.1s'
+                    }}
                 >
-                    <span
-                        className="text-xs tracking-[0.3em] uppercase"
-                        style={{
-                            fontFamily: 'var(--font-mono)',
-                            color: 'var(--text-muted)'
-                        }}
-                    >
-                        Scroll
-                    </span>
-                    <div
-                        className="w-px h-12"
-                        style={{
-                            background: 'linear-gradient(to bottom, var(--accent-warm), transparent)'
-                        }}
-                    />
+                    <div className="max-w-7xl mx-auto px-6 lg:px-12">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                            {[
+                                { number: '150+', label: 'Projects Delivered' },
+                                { number: '1-million', label: 'Traffic' },
+                                { number: '100k', label: 'Leads' },
+                                { number: '50+', label: 'International clients' }
+                            ].map((stat, i) => (
+                                <div key={i} className="flex flex-col items-center text-center">
+                                    <span
+                                        className="text-2xl md:text-3xl font-bold mb-1"
+                                        style={{
+                                            fontFamily: 'var(--font-display)',
+                                            color: '#FFFFFF'
+                                        }}
+                                    >
+                                        {stat.number}
+                                    </span>
+                                    <span
+                                        className="text-xs tracking-wider uppercase"
+                                        style={{
+                                            fontFamily: 'var(--font-mono)',
+                                            color: 'rgba(255, 255, 255, 0.8)'
+                                        }}
+                                    >
+                                        {stat.label}
+                                    </span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
 
             </section>
