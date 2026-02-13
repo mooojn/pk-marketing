@@ -7,16 +7,18 @@ import Pricing from "./components/Pricing";
 import DetailedServices from "./components/DetailedServices";
 import BrandSlider from "./components/BrandSlider";
 import Testimonials from "./components/Testimonials";
+import ContactForm from "./components/ContactForm";
 
 export default function Home() {
   return (
     <div className="grain-overlay">
       <Hero />
       <BrandSlider />
-      <Services />
+      <Testimonials />
+      {/* <Services /> */}
       <DetailedServices />
       <Pricing />
-      <Testimonials />
+      <ContactForm />
       <Footer />
     </div>
   );
