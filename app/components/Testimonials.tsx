@@ -7,7 +7,7 @@ const Testimonials = () => {
 
     const testimonials = [
         {
-            quote: "Adzzly transformed our online presence completely. Their strategic approach to digital marketing doubled our leads in just three months.",
+            quote: "AdzoMarketing transformed our online presence completely. Their strategic approach to digital marketing doubled our leads in just three months.",
             author: "Sarah Jenkins",
             role: "Marketing Director",
             company: "TechFlow",
@@ -21,7 +21,7 @@ const Testimonials = () => {
             accent: "var(--accent-sage)" // Emerald
         },
         {
-            quote: "Professional, creative, and data-driven. The team at Adzzly really understands how to connect with audiences in the digital age.",
+            quote: "Professional, creative, and data-driven. The team at AdzoMarketing really understands how to connect with audiences in the digital age.",
             author: "Emma Rodriguez",
             role: "Founder",
             company: "Spherule",

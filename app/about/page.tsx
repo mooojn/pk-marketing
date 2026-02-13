@@ -68,7 +68,7 @@ export default function About() {
                             </h2>
                             <div className="space-y-4" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-muted)', lineHeight: '1.8' }}>
                                 <p>
-                                    Adzzly was founded with a simple mission: to help local businesses in Pakistan compete
+                                    AdzoMarketing was founded with a simple mission: to help local businesses in Pakistan compete
                                     in the digital age. We saw too many talented entrepreneurs struggling to reach their
                                     audience online.
                                 </p>
@@ -202,7 +202,7 @@ export default function About() {
                 <div className="max-w-7xl mx-auto px-6 lg:px-12">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                         <p className="text-sm" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-light-muted)' }}>
-                            © {new Date().getFullYear()} Adzzly. All rights reserved.
+                            © {new Date().getFullYear()} AdzoMarketing. All rights reserved.
                         </p>
                         <div className="flex items-center gap-6">
                             {['Privacy Policy', 'Terms of Service'].map((item) => (

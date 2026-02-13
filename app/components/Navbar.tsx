@@ -60,7 +60,7 @@ export default function Navbar() {
                             <span className="text-lg font-bold" style={{ fontFamily: 'var(--font-display)' }}>A</span>
                         </div>
                         <span className="text-xl font-bold hidden sm:block" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}>
-                            Adzzly
+                            Adzo
                         </span>
                     </Link>
 
@@ -99,7 +99,7 @@ export default function Navbar() {
 
                     {/* CTA Button */}
                     <div className="hidden md:block">
-                        <Link href="/contact">
+                        <Link target="_blank" href="https://wa.me/+923244663916">
                             <button
                                 className="px-6 py-3 text-xs tracking-[0.15em] uppercase font-semibold transition-all duration-300"
                                 style={{ fontFamily: 'var(--font-mono)', background: 'var(--accent-warm)', color: '#FFFFFF' }}
@@ -112,7 +112,7 @@ export default function Navbar() {
                                     e.currentTarget.style.transform = 'translateY(0)';
                                 }}
                             >
-                                Get Started
+                                Contact
                             </button>
                         </Link>
                     </div>
