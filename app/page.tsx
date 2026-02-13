@@ -8,6 +8,7 @@ import DetailedServices from "./components/DetailedServices";
 import BrandSlider from "./components/BrandSlider";
 import Testimonials from "./components/Testimonials";
 import ContactForm from "./components/ContactForm";
+import CaseStudies from "./components/CaseStudies";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       {/* <Services /> */}
       <DetailedServices />
       <Pricing />
+      <CaseStudies />
       <ContactForm />
       <Footer />
     </div>
