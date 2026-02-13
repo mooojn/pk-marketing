@@ -9,6 +9,7 @@ import BrandSlider from "./components/BrandSlider";
 import Testimonials from "./components/Testimonials";
 import ContactForm from "./components/ContactForm";
 import CaseStudies from "./components/CaseStudies";
+import MarqueeBanner from "./components/MarqueeBanner";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <DetailedServices />
       <Pricing />
       <CaseStudies />
+      <MarqueeBanner />
       <ContactForm />
       <Footer />
     </div>
