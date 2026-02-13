@@ -151,7 +151,7 @@ export default function Hero() {
                                 animationDelay: '0.4s'
                             }}
                         >
-                            <span className="block">BUILD</span>
+                            <span className="block">CERTIFIED</span>
                             <span
                                 className="block relative"
                                 style={{
@@ -159,7 +159,7 @@ export default function Hero() {
                                     WebkitTextFillColor: 'transparent'
                                 }}
                             >
-                                DIFFERENT
+                                MARKETING
                                 {/* Decorative underscore */}
                                 <span
                                     className="absolute -bottom-1 sm:-bottom-2 left-0 h-0.5 sm:h-1 rounded-full"
@@ -174,7 +174,7 @@ export default function Hero() {
                                 className="block mt-2 sm:mt-4"
                                 style={{ color: 'var(--text-muted)' }}
                             >
-                                FUTURES
+                                AGENCY
                             </span>
                         </h1>
 
