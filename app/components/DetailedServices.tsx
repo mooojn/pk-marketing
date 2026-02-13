@@ -98,7 +98,7 @@ const DetailedServices = () => {
 
     return (
         <section
-            className="relative py-12 lg:py-20 overflow-hidden"
+            className="relative py-8 lg:py-10 overflow-hidden"
             style={{ background: 'var(--bg-primary)' }}
             id="detailed-services"
         >
@@ -147,7 +147,7 @@ const DetailedServices = () => {
                                 color: 'var(--text-primary)'
                             }}
                         >
-                            Full Spectrum <span style={{ color: 'var(--accent-warm)' }}>Solutions</span>
+                            Our 360° <span style={{ color: 'var(--accent-warm)' }}>Marketing Services</span>
                         </h2>
                         <p
                             className="text-base md:text-lg lg:text-xl leading-relaxed max-w-2xl"

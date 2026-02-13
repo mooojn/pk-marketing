@@ -30,7 +30,7 @@ const Testimonials = () => {
     ];
 
     return (
-        <section className="relative py-12 lg:py-20 overflow-hidden" style={{ background: 'var(--bg-secondary)' }}>
+        <section className="relative py-8 lg:py-10 overflow-hidden" style={{ background: 'var(--bg-secondary)' }}>
 
             {/* Background Decor */}
             <div
