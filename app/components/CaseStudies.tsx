@@ -33,7 +33,7 @@ export default function CaseStudies() {
     ];
 
     return (
-        <section className="py-24 lg:py-32" style={{ background: 'var(--bg-primary)' }}>
+        <section className="py-12 lg:py-20" style={{ background: 'var(--bg-primary)' }}>
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
                 {/* Section Header */}
                 <div className="max-w-3xl mb-16 lg:mb-24">

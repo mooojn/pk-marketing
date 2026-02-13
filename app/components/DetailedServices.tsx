@@ -98,7 +98,7 @@ const DetailedServices = () => {
 
     return (
         <section
-            className="relative py-24 overflow-hidden"
+            className="relative py-12 lg:py-20 overflow-hidden"
             style={{ background: 'var(--bg-primary)' }}
             id="detailed-services"
         >

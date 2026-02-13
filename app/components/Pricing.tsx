@@ -54,7 +54,7 @@ const Pricing = () => {
     ];
 
     return (
-        <section className="relative py-24 lg:py-32 overflow-hidden" style={{ background: 'var(--bg-primary)' }}>
+        <section className="relative py-12 lg:py-20 overflow-hidden" style={{ background: 'var(--bg-primary)' }}>
             {/* Background Ambience */}
             <div
                 className="absolute inset-0 pointer-events-none opacity-40"

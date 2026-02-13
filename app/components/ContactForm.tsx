@@ -20,7 +20,7 @@ export default function ContactForm() {
     ];
 
     return (
-        <section className="relative py-24 lg:py-32 overflow-hidden" style={{ background: 'var(--bg-secondary)' }}>
+        <section className="relative py-12 lg:py-20 overflow-hidden" style={{ background: 'var(--bg-secondary)' }}>
             {/* Background Gradients */}
             <div
                 className="absolute top-0 right-0 w-full h-full opacity-30 pointer-events-none"

@@ -20,7 +20,7 @@ const BrandSlider = () => {
     const duplicatedBrands = [...brands, ...brands, ...brands];
 
     return (
-        <div className="relative w-full overflow-hidden bg-white py-10 border-y border-[var(--border-subtle)]">
+        <div className="relative w-full overflow-hidden bg-white py-6 border-y border-[var(--border-subtle)]">
 
             {/* Gradient Masks for fade effect */}
             <div className="absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-white to-transparent" />
