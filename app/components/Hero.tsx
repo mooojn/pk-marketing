@@ -116,7 +116,7 @@ export default function Hero() {
                     </div>
 
                     {/* Center - Main Content */}
-                    <div className="flex-1 flex flex-col justify-center px-6 sm:px-8 lg:px-20 xl:px-32 py-12 lg:py-20 lg:pb-32">
+                    <div className="flex-1 flex flex-col justify-start lg:justify-center px-6 sm:px-8 lg:px-20 xl:px-32 pt-8 pb-80 lg:py-20 lg:pb-32">
 
                         {/* Eyebrow */}
                         <div
@@ -199,7 +199,7 @@ export default function Hero() {
                         >
                             {/* Primary CTA */}
                             <button
-                                className="group relative px-10 py-5 text-sm tracking-[0.2em] uppercase font-semibold transition-all duration-500 overflow-hidden"
+                                className="group relative px-6 py-4 sm:px-10 sm:py-5 text-sm tracking-[0.2em] uppercase font-semibold transition-all duration-500 overflow-hidden"
                                 style={{
                                     fontFamily: 'var(--font-mono)',
                                     background: 'var(--accent-warm)',
@@ -230,7 +230,7 @@ export default function Hero() {
 
                             {/* Secondary CTA */}
                             <button
-                                className="group px-10 py-5 text-sm tracking-[0.2em] uppercase font-semibold transition-all duration-300"
+                                className="group px-6 py-4 sm:px-10 sm:py-5 text-sm tracking-[0.2em] uppercase font-semibold transition-all duration-300"
                                 style={{
                                     fontFamily: 'var(--font-mono)',
                                     background: 'transparent',
