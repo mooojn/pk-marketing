@@ -250,7 +250,7 @@ export default function Hero() {
                             </button>
 
                             {/* Trust Logos (Desktop) */}
-                            <div className="hidden lg:flex items-center gap-6 ml-6 border-l pl-6" style={{ borderColor: 'var(--border-subtle)' }}>
+                            <div className="flex flex-wrap lg:flex-nowrap items-center gap-4 lg:gap-6 mt-4 sm:mt-0 lg:ml-6 lg:border-l lg:pl-6" style={{ borderColor: 'var(--border-subtle)' }}>
                                 {/* Trustpilot */}
                                 <div className="space-y-1">
                                     <div className="flex gap-0.5">
