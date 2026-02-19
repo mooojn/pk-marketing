@@ -6,19 +6,9 @@ export default function Footer() {
             className="relative pt-20 pb-8 overflow-hidden"
             style={{ background: 'var(--bg-dark)' }}
         >
-            {/* Background Pattern */}
-            <div
-                className="absolute inset-0 opacity-5"
-                style={{
-                    background: `repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 100px,
-            rgba(212, 132, 26, 0.1) 100px,
-            rgba(212, 132, 26, 0.1) 101px
-          )`
-                }}
-            />
+        
+
+            
 
             <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
 
@@ -30,9 +20,9 @@ export default function Footer() {
                         {/* Logo */}
                         <a href="#" className="inline-flex items-center mb-6">
                             <img
-                                src="/logo.png"
+                                src="/bg-logo.jpeg"
                                 alt="Adzzly Logo"
-                                className="h-16 w-auto object-contain"
+                                className="h-28 w-auto object-contain"
                             />
                         </a>
 
