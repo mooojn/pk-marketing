@@ -63,56 +63,6 @@ export default function Hero() {
                 {/* Main Content */}
                 <div className="relative z-10 min-h-screen flex pt-20">
 
-                    {/* Left Side - Navigation & Branding */}
-                    <div
-                        className={`hidden lg:flex flex-col justify-between py-12 px-8 w-24 ${isLoaded ? 'animate-slide-up' : 'opacity-0'}`}
-                        style={{
-                            borderRight: '1px solid var(--border-subtle)',
-                            animationDelay: '0.2s'
-                        }}
-                    >
-                        {/* Logo Mark */}
-                        <div className="w-12 h-12 flex items-center justify-center">
-                            <img
-                                src="/logo.png"
-                                alt="Adzzly Logo"
-                                className="w-full h-auto object-contain"
-                            />
-                        </div>
-
-                        {/* Vertical Text */}
-                        <div
-                            className="-rotate-90 whitespace-nowrap text-xs tracking-[0.3em] uppercase"
-                            style={{
-                                fontFamily: 'var(--font-mono)',
-                                color: 'var(--text-muted)',
-                                transformOrigin: 'center center',
-                                marginBottom: '100px'
-                            }}
-                        >
-                            Est. 2024
-                        </div>
-
-                        {/* Social Links */}
-                        <div className="flex flex-col gap-4">
-                            {['TW', 'IN', 'GH'].map((text, i) => (
-                                <a
-                                    key={text}
-                                    href="#"
-                                    className="text-xs tracking-widest transition-colors duration-300"
-                                    style={{
-                                        fontFamily: 'var(--font-mono)',
-                                        color: 'var(--text-muted)'
-                                    }}
-                                    onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-warm)'}
-                                    onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
-                                >
-                                    {text}
-                                </a>
-                            ))}
-                        </div>
-                    </div>
-
                     {/* Center - Main Content */}
                     <div className="flex-1 flex flex-col justify-start lg:justify-center px-6 sm:px-8 lg:px-20 xl:px-32 pt-8 pb-80 lg:py-20 lg:pb-32">
 

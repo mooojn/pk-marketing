@@ -95,7 +95,7 @@ const MarqueeBanner = () => {
                 <div
                     className="relative overflow-hidden py-5 -mt-2"
                     style={{
-                        background: "var(--accent-coral)",
+                        background: "black",
                         transform: "rotate(2deg) scale(1.05)",
                     }}
                 >
