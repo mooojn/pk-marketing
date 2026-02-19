@@ -100,7 +100,7 @@ export default function Navbar() {
                                 className="px-6 py-3 text-xs tracking-[0.15em] uppercase font-semibold transition-all duration-300"
                                 style={{ fontFamily: 'var(--font-mono)', background: 'var(--accent-warm)', color: '#FFFFFF' }}
                                 onMouseEnter={(e) => {
-                                    e.currentTarget.style.background = 'var(--accent-coral)';
+                                    e.currentTarget.style.background = 'black';
                                     e.currentTarget.style.transform = 'translateY(-2px)';
                                 }}
                                 onMouseLeave={(e) => {
