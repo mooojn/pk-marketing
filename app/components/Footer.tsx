@@ -44,7 +44,6 @@ export default function Footer() {
                                 { name: 'Facebook', icon: 'M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z' },
                                 { name: 'Twitter', icon: 'M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z' },
                                 { name: 'Instagram', icon: 'M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01M6.5 2h11A4.5 4.5 0 0122 6.5v11a4.5 4.5 0 01-4.5 4.5h-11A4.5 4.5 0 012 17.5v-11A4.5 4.5 0 016.5 2z' },
-                                { name: 'LinkedIn', icon: 'M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z' }
                             ].map((social) => (
                                 <a
                                     key={social.name}
@@ -132,8 +131,6 @@ export default function Footer() {
                                 'About Us',
                                 'Our Work',
                                 'Case Studies',
-                                'Blog',
-                                'Careers',
                                 'Contact'
                             ].map((item) => (
                                 <li key={item}>
@@ -188,7 +185,7 @@ export default function Footer() {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                 </svg>
                                 <span style={{ fontFamily: 'var(--font-display)', color: 'var(--text-light-muted)' }}>
-                                    hello@adzzly.com
+                                    info@adzomarketing.com
                                 </span>
                             </div>
                             <div className="flex items-start gap-3">
@@ -257,7 +254,7 @@ export default function Footer() {
                             color: 'var(--text-light-muted)'
                         }}
                     >
-                        © {new Date().getFullYear()} Adzzly. All rights reserved.
+                        © {new Date().getFullYear()} Adzo. All rights reserved.
                     </p>
 
                     <div className="flex items-center gap-6">
