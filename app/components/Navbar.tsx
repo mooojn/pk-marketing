@@ -56,7 +56,7 @@ export default function Navbar() {
                         <img
                             src="/logo.png"
                             alt="Adzzly Logo"
-                            className="h-30 w-auto object-contain"
+                            className="h-25 md:h-30 w-auto object-contain"
                         />
                     </Link>
 
