@@ -28,25 +28,12 @@ export default function Footer() {
                     {/* Company Info */}
                     <div className="lg:col-span-1">
                         {/* Logo */}
-                        <a href="#" className="inline-flex items-center gap-3 mb-6">
-                            <div
-                                className="w-12 h-12 flex items-center justify-center rounded-lg"
-                                style={{
-                                    border: '2px solid var(--accent-warm)',
-                                    color: 'var(--accent-warm)'
-                                }}
-                            >
-                                <span className="text-xl font-bold" style={{ fontFamily: 'var(--font-display)' }}>A</span>
-                            </div>
-                            <span
-                                className="text-2xl font-bold"
-                                style={{
-                                    fontFamily: 'var(--font-display)',
-                                    color: 'var(--text-light)'
-                                }}
-                            >
-                                Adzzly
-                            </span>
+                        <a href="#" className="inline-flex items-center mb-6">
+                            <img
+                                src="/logo.png"
+                                alt="Adzzly Logo"
+                                className="h-16 w-auto object-contain"
+                            />
                         </a>
 
                         <p

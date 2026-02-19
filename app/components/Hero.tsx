@@ -72,14 +72,12 @@ export default function Hero() {
                         }}
                     >
                         {/* Logo Mark */}
-                        <div
-                            className="w-12 h-12 flex items-center justify-center rounded-lg"
-                            style={{
-                                border: '2px solid var(--accent-warm)',
-                                color: 'var(--accent-warm)'
-                            }}
-                        >
-                            <span className="text-xl font-bold" style={{ fontFamily: 'var(--font-display)' }}>A</span>
+                        <div className="w-12 h-12 flex items-center justify-center">
+                            <img
+                                src="/logo.png"
+                                alt="Adzzly Logo"
+                                className="w-full h-auto object-contain"
+                            />
                         </div>
 
                         {/* Vertical Text */}

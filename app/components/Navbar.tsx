@@ -49,19 +49,15 @@ export default function Navbar() {
                     {/* Logo */}
                     <Link
                         href="/"
-                        className="flex items-center gap-3 transition-all duration-300"
+                        className="flex items-center transition-all duration-300"
                         onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
                         onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
                     >
-                        <div
-                            className="w-10 h-10 flex items-center justify-center rounded-lg"
-                            style={{ border: '2px solid var(--accent-warm)', color: 'var(--accent-warm)' }}
-                        >
-                            <span className="text-lg font-bold" style={{ fontFamily: 'var(--font-display)' }}>A</span>
-                        </div>
-                        <span className="text-xl font-bold hidden sm:block" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}>
-                            Adzo
-                        </span>
+                        <img
+                            src="/logo.png"
+                            alt="Adzzly Logo"
+                            className="h-12 w-auto object-contain"
+                        />
                     </Link>
 
                     {/* Desktop Navigation */}
