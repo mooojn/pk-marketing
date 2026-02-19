@@ -12,10 +12,10 @@
   /* Slate 950 */
 
   /* Primary Accents */
-  --accent-warm: #597B29;
-  /* Green - The new "Primary" */
-  --accent-warm-light: #7DA343;
-  /* Lighter Green */
+  --accent-warm: #77B93E;
+  /* New Green - The new "Primary" */
+  --accent-warm-light: #99D267;
+  /* Lighter New Green */
   --accent-coral: #F43F5E;
   /* Rose 500 */
   --accent-coral-light: #FB7185;
@@ -43,12 +43,12 @@
   --text-light-muted: rgba(248, 250, 252, 0.7);
 
   /* Borders */
-  --border-subtle: rgba(89, 123, 41, 0.15);
+  --border-subtle: rgba(119, 185, 62, 0.15);
   /* Green low opacity */
   --border-light: rgba(248, 250, 252, 0.15);
 
   /* Gradients */
-  --gradient-ambient: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(89, 123, 41, 0.08) 0%, transparent 60%);
+  --gradient-ambient: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(119, 185, 62, 0.08) 0%, transparent 60%);
   --gradient-mesh:
     radial-gradient(at 40% 20%, rgba(212, 132, 26, 0.06) 0px, transparent 50%),
     radial-gradient(at 80% 0%, rgba(232, 90, 79, 0.05) 0px, transparent 50%),
@@ -215,11 +215,11 @@ body {
 
   0%,
   100% {
-    box-shadow: 0 0 20px rgba(89, 123, 41, 0.15), inset 0 0 20px rgba(89, 123, 41, 0.03);
+    box-shadow: 0 0 20px rgba(119, 185, 62, 0.15), inset 0 0 20px rgba(119, 185, 62, 0.03);
   }
 
   50% {
-    box-shadow: 0 0 40px rgba(89, 123, 41, 0.25), inset 0 0 30px rgba(89, 123, 41, 0.05);
+    box-shadow: 0 0 40px rgba(119, 185, 62, 0.25), inset 0 0 30px rgba(119, 185, 62, 0.05);
   }
 }
 

@@ -19,7 +19,7 @@ export default function CaseStudies() {
             category: "Web Design & Branding",
             result: "3x Lead Quality",
             description: "A complete digital overhaul for a luxury real estate firm, resulting in higher qualified leads and a premium brand image.",
-            imageGradient: "linear-gradient(135deg, #597B29 0%, #10B981 100%)",
+            imageGradient: "linear-gradient(135deg, #77B93E 0%, #10B981 100%)",
             color: "var(--accent-warm)"
         },
         {
