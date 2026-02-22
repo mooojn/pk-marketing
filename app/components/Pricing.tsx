@@ -7,46 +7,59 @@ const Pricing = () => {
 
     const plans = [
         {
-            name: "Starter",
+            name: "Basic",
             description: "Essential tools for small businesses taking their first digital steps.",
-            price: "$999",
+            price: "35,000 PKR",
             features: [
-                "Single Page Website",
-                "Basic SEO Setup",
-                "Social Media Setup",
-                "1 Month Support",
-                "Mobile Responsive"
+                "10 Static Posts per month",
+                "10 Creative Stories",
+                "Content Creation Plan",
+                "SM Posting Strategy",
+                "Ads Management (Meta / TikTok)",
+                "Lead Generation Focus",
+                "Monthly Performance Report",
+                "Video Editing (4 videos, raw content by client)",
+                "CRM Integration",
+                "Dedicated Account Manager"
             ],
             accent: "var(--accent-sage)", // Emerald
             bgAccent: "rgba(16, 185, 129, 0.1)"
         },
         {
-            name: "Professional",
+            name: "Growth",
             description: "Comprehensive solution for growing brands ready to scale.",
-            price: "$2,499",
+            price: "65,000 PKR",
             features: [
-                "5-Page Custom Website",
-                "Advanced SEO Strategy",
-                "Content Marketing (4 Posts)",
-                "Social Media Management",
-                "3 Months Support",
-                "Analytics Dashboard"
+                "15 Static Posts per month",
+                "15 Creative Stories",
+                "Content Creation Plan",
+                "Creative Marketing Strategy",
+                "Ads Management (Meta / TikTok)",
+                "Lead Generation Focus",
+                "Performance Report after 15 days",
+                "Video Editing (4 videos, raw content by client)",
+                "CRM Integration",
+                "Dedicated Account Manager"
             ],
             accent: "var(--accent-warm)", // Indigo (Primary)
             bgAccent: "rgba(79, 70, 229, 0.1)",
             popular: true
         },
         {
-            name: "Enterprise",
+            name: "Premium",
             description: "Full-scale digital transformation for established organizations.",
-            price: "Custom",
+            price: "85,000 PKR",
             features: [
-                "E-commerce / Web App",
-                "Full-Funnel Marketing",
-                "Daily Content & Management",
-                "Dedicated Account Manager",
-                "24/7 Priority Support",
-                "Custom Integrations"
+                "20 Static Posts per month",
+                "20 Creative Stories",
+                "Advance Content Creation",
+                "Advance Marketing Strategy",
+                "Ads Management (Meta / TikTok)",
+                "Lead Generation Focus",
+                "Weekly Performance Reporting",
+                "Video Editing (8 videos, raw content by client)",
+                "CRM Integration",
+                "Dedicated Account Manager"
             ],
             accent: "var(--accent-coral)", // Rose
             bgAccent: "rgba(244, 63, 94, 0.1)"
@@ -186,9 +199,7 @@ const Pricing = () => {
                                 >
                                     {plan.price}
                                 </span>
-                                {plan.price !== "Custom" && (
-                                    <span className="text-sm text-gray-400 font-mono">/project</span>
-                                )}
+                                <span className="text-sm text-gray-400 font-mono">/month</span>
                             </div>
 
                             {/* Divider */}

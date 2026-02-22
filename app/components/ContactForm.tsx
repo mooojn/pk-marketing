@@ -7,16 +7,16 @@ export default function ContactForm() {
     const [budget, setBudget] = useState<string>("");
 
     const packages = [
-        "Starter Package",
-        "Professional Package",
-        "Custom Solution"
+        "Basic Package",
+        "Growth Package",
+        "Premium Package"
     ];
 
     const budgetRanges = [
-        "< $1k",
-        "$1k - $5k",
-        "$5k - $10k",
-        "$10k+"
+        "< 30k PKR",
+        "30k - 60k PKR",
+        "60k - 100k PKR",
+        "100k+ PKR"
     ];
 
     return (
@@ -101,63 +101,47 @@ export default function ContactForm() {
                             {/* Personal Info */}
                             <div className="space-y-6">
                                 <div>
-                                    <label className="block text-sm font-medium mb-2 uppercase tracking-wide" style={{ color: 'var(--text-muted)' }}>Full Name</label>
+                                    <label className="block text-sm font-bold mb-2 uppercase tracking-wide text-gray-700">Full Name</label>
                                     <input
                                         type="text"
                                         placeholder="John Doe"
-                                        className="w-full px-4 py-4 rounded-xl text-base outline-none transition-all duration-300 placeholder:text-gray-400"
+                                        className="w-full px-4 py-4 rounded-xl text-base outline-none transition-all duration-300 placeholder:text-gray-400 border border-gray-200 focus:border-transparent focus:ring-2"
                                         style={{
-                                            background: 'var(--bg-secondary)',
-                                            border: '1px solid transparent',
-                                            color: 'var(--text-primary)'
-                                        }}
-                                        onFocus={(e) => {
-                                            e.currentTarget.style.borderColor = 'var(--accent-warm)';
-                                            e.currentTarget.style.background = '#FFFFFF';
-                                        }}
-                                        onBlur={(e) => {
-                                            e.currentTarget.style.borderColor = 'transparent';
-                                            e.currentTarget.style.background = 'var(--bg-secondary)';
-                                        }}
+                                            background: '#F9FAFB', // Light gray background for contrast
+                                            color: '#111827', // Dark text
+                                            '--tw-ring-color': 'var(--accent-warm)'
+                                        } as React.CSSProperties}
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium mb-2 uppercase tracking-wide" style={{ color: 'var(--text-muted)' }}>Phone Number</label>
+                                    <label className="block text-sm font-bold mb-2 uppercase tracking-wide text-gray-700">Phone Number</label>
                                     <input
                                         type="tel"
-                                        placeholder="+1 (555) 000-0000"
-                                        className="w-full px-4 py-4 rounded-xl text-base outline-none transition-all duration-300 placeholder:text-gray-400"
+                                        placeholder="+92 300 0000000"
+                                        className="w-full px-4 py-4 rounded-xl text-base outline-none transition-all duration-300 placeholder:text-gray-400 border border-gray-200 focus:border-transparent focus:ring-2"
                                         style={{
-                                            background: 'var(--bg-secondary)',
-                                            border: '1px solid transparent',
-                                            color: 'var(--text-primary)'
-                                        }}
-                                        onFocus={(e) => {
-                                            e.currentTarget.style.borderColor = 'var(--accent-warm)';
-                                            e.currentTarget.style.background = '#FFFFFF';
-                                        }}
-                                        onBlur={(e) => {
-                                            e.currentTarget.style.borderColor = 'transparent';
-                                            e.currentTarget.style.background = 'var(--bg-secondary)';
-                                        }}
+                                            background: '#F9FAFB', // Light gray background for contrast
+                                            color: '#111827', // Dark text
+                                            '--tw-ring-color': 'var(--accent-warm)'
+                                        } as React.CSSProperties}
                                     />
                                 </div>
                             </div>
 
                             {/* Package Selection */}
                             <div>
-                                <label className="block text-sm font-medium mb-3 uppercase tracking-wide" style={{ color: 'var(--text-muted)' }}>Select Package</label>
+                                <label className="block text-sm font-bold mb-3 uppercase tracking-wide text-gray-700">Select Package</label>
                                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                                     {packages.map((pkg) => (
                                         <button
                                             key={pkg}
                                             type="button"
                                             onClick={() => setSelectedPackage(pkg)}
-                                            className="px-4 py-3 rounded-lg text-sm text-center transition-all duration-300 border"
+                                            className="px-4 py-3 rounded-lg text-sm text-center transition-all duration-300 border font-medium"
                                             style={{
-                                                background: selectedPackage === pkg ? 'var(--accent-warm)' : 'var(--bg-secondary)',
-                                                borderColor: selectedPackage === pkg ? 'var(--accent-warm)' : 'transparent',
-                                                color: selectedPackage === pkg ? '#FFFFFF' : 'var(--text-muted)'
+                                                background: selectedPackage === pkg ? 'var(--accent-warm)' : '#F9FAFB',
+                                                borderColor: selectedPackage === pkg ? 'var(--accent-warm)' : '#E5E7EB',
+                                                color: selectedPackage === pkg ? '#FFFFFF' : '#4B5563'
                                             }}
                                         >
                                             {pkg}
@@ -168,18 +152,18 @@ export default function ContactForm() {
 
                             {/* Budget Selection */}
                             <div>
-                                <label className="block text-sm font-medium mb-3 uppercase tracking-wide" style={{ color: 'var(--text-muted)' }}>Estimated Budget</label>
+                                <label className="block text-sm font-bold mb-3 uppercase tracking-wide text-gray-700">Estimated Budget</label>
                                 <div className="flex flex-wrap gap-3">
                                     {budgetRanges.map((range) => (
                                         <button
                                             key={range}
                                             type="button"
                                             onClick={() => setBudget(range)}
-                                            className="px-4 py-2 rounded-full text-sm transition-all duration-300 border"
+                                            className="px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border"
                                             style={{
-                                                background: budget === range ? 'rgba(79, 70, 229, 0.1)' : 'transparent',
-                                                borderColor: budget === range ? 'var(--accent-warm)' : 'var(--border-subtle)',
-                                                color: budget === range ? 'var(--accent-warm)' : 'var(--text-muted)'
+                                                background: budget === range ? 'rgba(212, 132, 26, 0.1)' : '#F9FAFB',
+                                                borderColor: budget === range ? 'var(--accent-warm)' : '#E5E7EB',
+                                                color: budget === range ? 'var(--accent-warm)' : '#4B5563'
                                             }}
                                         >
                                             {range}
