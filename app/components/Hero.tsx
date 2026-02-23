@@ -2,16 +2,28 @@
 
 import { useEffect, useState } from "react";
 
+/** Shape of the lead-capture form */
+interface FormData {
+  name: string;
+  email: string;
+}
+
+/** Stat item shown in the bottom metrics bar */
+interface Stat {
+  number: string;
+  label: string;
+}
+
 /**
  * Hero — Conversion-optimised lead capture section
  * Design: Editorial split-layout with inline form, zero scroll required.
  * Colors sourced exclusively from global CSS variables (green-accented palette).
  */
 export default function Hero() {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "" });
-  const [submitted, setSubmitted] = useState(false);
-  const [focused, setFocused] = useState(null);
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const [formData, setFormData] = useState<FormData>({ name: "", email: "" });
+  const [submitted, setSubmitted] = useState<boolean>(false);
+  const [focused, setFocused] = useState<string | null>(null);
 
   useEffect(() => {
     // Trigger entrance animations after mount
@@ -19,16 +31,25 @@ export default function Hero() {
     return () => clearTimeout(t);
   }, []);
 
-  function handleChange(e) {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
     if (!formData.name || !formData.email) return;
     // TODO: wire up to your actual form handler / API
     setSubmitted(true);
   }
+
+  const stats: Stat[] = [
+    { number: "150+", label: "Projects Delivered" },
+    { number: "1M+",  label: "Traffic Generated" },
+    { number: "100K+", label: "Leads Captured" },
+    { number: "50+",  label: "International Clients" },
+  ];
+
+  const platforms: string[] = ["Trustpilot", "Google", "Clutch"];
 
   return (
     <section
@@ -72,7 +93,6 @@ export default function Hero() {
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
-
           {/* Eyebrow badge */}
           <div
             className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--border-subtle)] bg-[var(--accent-warm)]/10 px-4 py-1.5"
@@ -105,7 +125,7 @@ export default function Hero() {
               }}
             >
               Actually Grows
-              {/* animated underline */}
+              {/* Animated underline */}
               <span
                 className="absolute -bottom-1 left-0 h-[2px] rounded-full bg-gradient-to-r from-[var(--accent-warm)] to-[var(--accent-sage)]"
                 style={{
@@ -123,7 +143,8 @@ export default function Hero() {
             className="mb-8 max-w-md text-base leading-[1.75] text-[var(--text-muted)]"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Stop guessing what works. We build data-backed campaigns that fill your pipeline — or you don't pay.{" "}
+            Stop guessing what works. We build data-backed campaigns that fill
+            your pipeline — or you don&apos;t pay.{" "}
             <span className="font-semibold text-[var(--text-primary)]">
               Results guaranteed, zero jargon.
             </span>
@@ -136,7 +157,13 @@ export default function Hero() {
             <div className="flex items-center gap-2">
               <div className="flex gap-0.5" aria-label="5 star rating">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <svg key={i} className="h-4 w-4 text-[var(--accent-gold)]" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <svg
+                    key={i}
+                    className="h-4 w-4 text-[var(--accent-gold)]"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                   </svg>
                 ))}
@@ -149,14 +176,16 @@ export default function Hero() {
 
             {/* Client count */}
             <p className="text-sm text-[var(--text-muted)]">
-              <span className="font-bold text-[var(--text-primary)]">50+</span> international clients
+              <span className="font-bold text-[var(--text-primary)]">50+</span>{" "}
+              international clients
             </p>
 
             <div className="h-4 w-px bg-[var(--border-subtle)]" aria-hidden="true" />
 
             {/* Projects */}
             <p className="text-sm text-[var(--text-muted)]">
-              <span className="font-bold text-[var(--text-primary)]">150+</span> projects delivered
+              <span className="font-bold text-[var(--text-primary)]">150+</span>{" "}
+              projects delivered
             </p>
           </div>
         </div>
@@ -194,7 +223,7 @@ export default function Hero() {
                     className="mt-1 text-2xl font-bold text-[var(--text-primary)]"
                     style={{ fontFamily: "var(--font-display)" }}
                   >
-                    Let's grow your brand
+                    Let&apos;s grow your brand
                   </h2>
                   <p className="mt-1 text-sm text-[var(--text-muted)]">
                     No commitment. Get a custom growth plan in 48 h.
@@ -236,9 +265,12 @@ export default function Hero() {
                         `}
                         style={{ fontFamily: "var(--font-display)" }}
                       />
-                      {/* Focus indicator icon */}
+                      {/* Focus indicator */}
                       {focused === "name" && (
-                        <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[var(--accent-warm)]" aria-hidden="true">
+                        <span
+                          className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[var(--accent-warm)]"
+                          aria-hidden="true"
+                        >
                           ✦
                         </span>
                       )}
@@ -278,7 +310,10 @@ export default function Hero() {
                         style={{ fontFamily: "var(--font-display)" }}
                       />
                       {focused === "email" && (
-                        <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[var(--accent-warm)]" aria-hidden="true">
+                        <span
+                          className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[var(--accent-warm)]"
+                          aria-hidden="true"
+                        >
                           ✦
                         </span>
                       )}
@@ -302,7 +337,7 @@ export default function Hero() {
                     }}
                     aria-label="Get your free marketing strategy"
                   >
-                    {/* Shimmer overlay on hover */}
+                    {/* Shimmer sweep on hover */}
                     <span
                       className="absolute inset-0 -translate-x-full skew-x-12 bg-white/20 transition-transform duration-500 group-hover:translate-x-full"
                       aria-hidden="true"
@@ -329,12 +364,22 @@ export default function Hero() {
               </>
             ) : (
               /* ── Success state ─────────────────────────────────────────── */
-              <div className="flex flex-col items-center py-8 text-center" role="status" aria-live="polite">
+              <div
+                className="flex flex-col items-center py-8 text-center"
+                role="status"
+                aria-live="polite"
+              >
                 <div
                   className="mb-4 flex h-16 w-16 items-center justify-center rounded-full"
                   style={{ background: "rgba(119,185,62,0.12)" }}
                 >
-                  <svg className="h-8 w-8 text-[var(--accent-warm)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <svg
+                    className="h-8 w-8 text-[var(--accent-warm)]"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
@@ -342,7 +387,7 @@ export default function Hero() {
                   className="mb-2 text-xl font-bold text-[var(--text-primary)]"
                   style={{ fontFamily: "var(--font-display)" }}
                 >
-                  You're on the list!
+                  You&apos;re on the list!
                 </h3>
                 <p className="text-sm text-[var(--text-muted)]">
                   Expect a custom strategy in your inbox within{" "}
@@ -352,9 +397,9 @@ export default function Hero() {
             )}
           </div>
 
-          {/* Below-card logos */}
+          {/* Below-card platform labels */}
           <div className="mt-5 flex items-center justify-center gap-6">
-            {["Trustpilot", "Google", "Clutch"].map((name) => (
+            {platforms.map((name) => (
               <span
                 key={name}
                 className="text-[10px] font-bold uppercase tracking-widest text-slate-400"
@@ -378,12 +423,7 @@ export default function Hero() {
         }}
       >
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px md:grid-cols-4">
-          {[
-            { number: "150+", label: "Projects Delivered" },
-            { number: "1M+", label: "Traffic Generated" },
-            { number: "100K+", label: "Leads Captured" },
-            { number: "50+", label: "International Clients" },
-          ].map((stat) => (
+          {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col items-center py-5 text-center">
               <span
                 className="text-xl font-bold text-white md:text-2xl"
