@@ -3,8 +3,13 @@ export const services = [
         title: "Meta Ads Management",
         description: "Data-driven ad campaigns on Facebook and Instagram to scale ROI.",
         icon: (
-            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C18.34 21.21 22 17.06 22 12.06C22 6.53 17.5 2.04 12 2.04Z" />
+            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path
+                    d="M3.5 15.2c1.2-4.9 4.4-8.4 6.8-8.4 2.9 0 4.3 3.8 5.7 6.1 1.1 1.9 2.1 2.7 3.3 2.7 1.2 0 1.9-.7 2.2-1.8M20.5 8.8c-1.2 4.9-4.4 8.4-6.8 8.4-2.9 0-4.3-3.8-5.7-6.1-1.1-1.9-2.1-2.7-3.3-2.7-1.2 0-1.9.7-2.2 1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.8}
+                />
             </svg>
         ),
         accent: "var(--accent-purple)",
@@ -39,8 +44,12 @@ export const services = [
         title: "Graphic Designing",
         description: "Complete visual identity systems, logos, and stunning brand collateral.",
         icon: (
-            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
+                <circle cx="9" cy="6.5" r="3.5" fill="#F24E1E" />
+                <circle cx="9" cy="12" r="3.5" fill="#A259FF" />
+                <circle cx="9" cy="17.5" r="3.5" fill="#1ABCFE" />
+                <circle cx="14.5" cy="6.5" r="3.5" fill="#FF7262" />
+                <path d="M11 17.5a3.5 3.5 0 117 0 3.5 3.5 0 01-7 0z" fill="#0ACF83" />
             </svg>
         ),
         accent: "var(--accent-gold)",
@@ -61,8 +70,19 @@ export const services = [
         title: "SEO (On-Site & Off-Site)",
         description: "Full-spectrum SEO strategies to dominate search rankings and drive organic traffic.",
         icon: (
-            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
+                <rect x="2.5" y="4" width="19" height="16" rx="4" fill="currentColor" opacity="0.14" />
+                <text
+                    x="12"
+                    y="15"
+                    textAnchor="middle"
+                    fontSize="7"
+                    fontWeight="700"
+                    fill="currentColor"
+                    style={{ letterSpacing: "0.08em" }}
+                >
+                    SEO
+                </text>
             </svg>
         ),
         accent: "var(--accent-teal)",
