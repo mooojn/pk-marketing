@@ -1,11 +1,12 @@
-import { Figma, Orbit, SearchCheck } from "lucide-react";
+import { Figma, SearchCheck } from "lucide-react";
+import { FaMeta } from "react-icons/fa6";
 
 export const services = [
     {
         title: "Meta Ads Management",
         description: "Data-driven ad campaigns on Facebook and Instagram to scale ROI.",
         icon: (
-            <Orbit className="w-6 h-6" strokeWidth={1.8} />
+            <FaMeta className="w-6 h-6" />
         ),
         accent: "var(--accent-purple)",
         bgAccent: "rgba(24, 119, 242, 0.1)"
