@@ -95,7 +95,7 @@ export default function Navbar() {
 
                     {/* CTA Button */}
                     <div className="hidden md:block">
-                        <Link target="_blank" href="https://wa.me/+923244663916">
+                        <Link target="_blank" href="https://wa.me/+923706037115">
                             <button
                                 className="px-6 py-3 text-xs tracking-[0.15em] uppercase font-semibold transition-all duration-300"
                                 style={{ fontFamily: 'var(--font-mono)', background: 'var(--accent-warm)', color: '#FFFFFF' }}

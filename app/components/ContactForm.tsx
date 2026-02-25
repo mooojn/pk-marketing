@@ -70,7 +70,7 @@ export default function ContactForm() {
                                 </div>
                                 <div>
                                     <p className="text-sm uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>Call Us Directly</p>
-                                    <p className="text-lg font-semibold" style={{ color: 'var(--text-primary)' }}>+92 300 1234567</p>
+                                    <p className="text-lg font-semibold" style={{ color: 'var(--text-primary)' }}>+92 370 6037115</p>
                                 </div>
                             </div>
 
@@ -82,7 +82,7 @@ export default function ContactForm() {
                                 </div>
                                 <div>
                                     <p className="text-sm uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>Email Us</p>
-                                    <p className="text-lg font-semibold" style={{ color: 'var(--text-primary)' }}>hello@adzomarketing.com</p>
+                                    <p className="text-lg font-semibold" style={{ color: 'var(--text-primary)' }}>info@adzomarketing.com</p>
                                 </div>
                             </div>
                         </div>
