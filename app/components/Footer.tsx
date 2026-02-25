@@ -42,7 +42,6 @@ export default function Footer() {
                         <div className="flex items-center gap-4">
                             {[
                                 { name: 'Facebook', icon: 'M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z' },
-                                { name: 'Twitter', icon: 'M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z' },
                                 { name: 'Instagram', icon: 'M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01M6.5 2h11A4.5 4.5 0 0122 6.5v11a4.5 4.5 0 01-4.5 4.5h-11A4.5 4.5 0 012 17.5v-11A4.5 4.5 0 016.5 2z' },
                             ].map((social) => (
                                 <a
@@ -196,45 +195,6 @@ export default function Footer() {
                                     +92 300 1234567
                                 </span>
                             </div>
-                        </div>
-
-                        {/* Newsletter */}
-                        <h5
-                            className="text-sm font-semibold mb-3"
-                            style={{
-                                fontFamily: 'var(--font-display)',
-                                color: 'var(--text-light)'
-                            }}
-                        >
-                            Subscribe to Newsletter
-                        </h5>
-                        <div className="flex gap-2">
-                            <input
-                                type="email"
-                                placeholder="Your email"
-                                className="flex-1 px-4 py-3 text-sm outline-none transition-all duration-300"
-                                style={{
-                                    fontFamily: 'var(--font-display)',
-                                    background: 'var(--border-light)',
-                                    color: 'var(--text-light)',
-                                    border: '1px solid transparent'
-                                }}
-                                onFocus={(e) => e.currentTarget.style.borderColor = 'var(--accent-warm)'}
-                                onBlur={(e) => e.currentTarget.style.borderColor = 'transparent'}
-                            />
-                            <button
-                                className="px-4 py-3 transition-all duration-300"
-                                style={{
-                                    background: 'var(--accent-warm)',
-                                    color: '#FFFFFF'
-                                }}
-                                onMouseEnter={(e) => e.currentTarget.style.background = 'var(--accent-coral)'}
-                                onMouseLeave={(e) => e.currentTarget.style.background = 'var(--accent-warm)'}
-                            >
-                                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                </svg>
-                            </button>
                         </div>
                     </div>
                 </div>

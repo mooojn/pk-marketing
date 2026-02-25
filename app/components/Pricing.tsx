@@ -11,7 +11,7 @@ const Pricing = () => {
         {
             name: "Basic",
             description: "Essential tools for small businesses taking their first digital steps.",
-            price: "35,000 PKR",
+            price: "45,000 PKR",
             features: [
                 "10 Static Posts per month",
                 "10 Creative Stories",
@@ -30,7 +30,7 @@ const Pricing = () => {
         {
             name: "Growth",
             description: "Comprehensive solution for growing brands ready to scale.",
-            price: "65,000 PKR",
+            price: "70,000 PKR",
             features: [
                 "15 Static Posts per month",
                 "15 Creative Stories",
@@ -50,7 +50,7 @@ const Pricing = () => {
         {
             name: "Premium",
             description: "Full-scale digital transformation for established organizations.",
-            price: "85,000 PKR",
+            price: "95,000 PKR",
             features: [
                 "20 Static Posts per month",
                 "20 Creative Stories",
@@ -119,7 +119,7 @@ const Pricing = () => {
                             color: 'var(--text-primary)'
                         }}
                     >
-                        Transparent <span style={{ color: 'var(--accent-warm)' }}>Pricing</span>
+                        Select <span style={{ color: 'var(--accent-warm)' }}> Your Package</span>
                     </h2>
 
                     <p

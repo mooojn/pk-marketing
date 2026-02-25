@@ -1,7 +1,6 @@
 "use client";
 
 import Hero from "./components/Hero";
-import Services from "./components/Services";
 import Footer from "./components/Footer";
 import Pricing from "./components/Pricing";
 import DetailedServices from "./components/DetailedServices";
@@ -17,7 +16,6 @@ export default function Home() {
       <Hero />
       <BrandSlider />
       <Testimonials />
-      {/* <Services /> */}
       <DetailedServices />
       <Pricing />
       <CaseStudies />
