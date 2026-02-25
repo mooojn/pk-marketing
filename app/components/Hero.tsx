@@ -2,67 +2,78 @@
 
 import { useEffect, useState } from "react";
 
-/** Shape of the lead-capture form */
 interface FormData {
-  name: string;
   email: string;
+  website: string;
 }
 
-/** Stat item shown in the bottom metrics bar */
 interface Stat {
   number: string;
   label: string;
 }
 
-/**
- * Hero — Conversion-optimised lead capture section
- * Design: Editorial split-layout with inline form, zero scroll required.
- * Colors sourced exclusively from global CSS variables (green-accented palette).
- */
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
-  const [formData, setFormData] = useState<FormData>({ name: "", email: "" });
+  const [formData, setFormData] = useState<FormData>({ email: "", website: "" });
   const [submitted, setSubmitted] = useState<boolean>(false);
-  const [focused, setFocused] = useState<string | null>(null);
+  const [errors, setErrors] = useState<Partial<FormData>>({});
 
   useEffect(() => {
-    // Trigger entrance animations after mount
     const t = setTimeout(() => setIsLoaded(true), 80);
     return () => clearTimeout(t);
   }, []);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+
+    if (errors[name as keyof FormData]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
+  }
+
+  function validate(): boolean {
+    const nextErrors: Partial<FormData> = {};
+    const email = formData.email.trim();
+
+    if (!email) {
+      nextErrors.email = "Email is required.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      nextErrors.email = "Enter a valid email address.";
+    }
+
+    setErrors(nextErrors);
+    return Object.keys(nextErrors).length === 0;
   }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
-    if (!formData.name || !formData.email) return;
-    // TODO: wire up to your actual form handler / API
+    if (!validate()) return;
+
+    // TODO: wire this to your lead endpoint / CRM
     setSubmitted(true);
   }
 
   const stats: Stat[] = [
-    { number: "150+", label: "Projects Delivered" },
-    { number: "1M+",  label: "Traffic Generated" },
-    { number: "100K+", label: "Leads Captured" },
-    { number: "50+",  label: "International Clients" },
+    { number: "154%", label: "Average Lead Growth" },
+    { number: "93", label: "Campaigns Scaled" },
+    { number: "48h", label: "To First Plan" },
   ];
 
-  const platforms: string[] = ["Trustpilot", "Google", "Clutch"];
+  const proofItems: string[] = ["No long-term contracts", "Weekly performance reporting"];
+
+  const platforms: string[] = ["Google", "Clutch", "Trustpilot"];
 
   return (
     <section
       className="relative min-h-screen w-full overflow-hidden bg-[var(--bg-primary)]"
       aria-label="Hero section"
     >
-      {/* ─── Ambient background layers ─────────────────────────────────────── */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{ background: "var(--gradient-ambient)" }}
         aria-hidden="true"
       />
-      {/* Diagonal stripe texture */}
       <div
         className="pointer-events-none absolute inset-0 opacity-40"
         style={{
@@ -72,7 +83,6 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      {/* ─── Glowing orbs ──────────────────────────────────────────────────── */}
       <div
         className="pointer-events-none absolute -top-32 right-0 h-[560px] w-[560px] rounded-full opacity-30 blur-3xl"
         style={{ background: "radial-gradient(circle, var(--accent-warm) 0%, transparent 70%)" }}
@@ -84,21 +94,16 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      {/* ─── Main content grid ─────────────────────────────────────────────── */}
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-6 py-24 lg:flex-row lg:items-center lg:gap-16 lg:px-12 xl:px-16">
-
-        {/* ── LEFT COLUMN: copy ──────────────────────────────────────────── */}
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-6 py-20 pb-28 lg:flex-row lg:items-center lg:gap-16 lg:px-12 lg:pb-24 xl:px-16">
         <div
-          className={`flex flex-col items-start lg:flex-1 transition-all duration-700 ${
-            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          className={`flex flex-col items-start transition-all duration-700 lg:flex-1 ${
+            isLoaded ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
           }`}
         >
-          {/* Eyebrow badge */}
           <div
             className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--border-subtle)] bg-[var(--accent-warm)]/10 px-4 py-1.5"
             style={{ transitionDelay: "0.1s" }}
           >
-            {/* Pulsing dot */}
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--accent-warm)] opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-[var(--accent-warm)]" />
@@ -107,53 +112,40 @@ export default function Hero() {
               className="text-xs font-semibold uppercase tracking-widest text-[var(--accent-warm)]"
               style={{ fontFamily: "var(--font-mono)" }}
             >
-              Certified Marketing Agency
+              Performance Marketing Partner
             </span>
           </div>
 
-          {/* ── Headline — benefit-driven, ≤ 8 words ─────────────────────── */}
           <h1
-            className="mb-5 text-[clamp(2rem,3.8vw,3.25rem)] font-extrabold leading-[1.1] tracking-tight text-[var(--text-primary)]"
+            className="mb-5 text-[clamp(2rem,3.8vw,3.35rem)] font-extrabold leading-[1.08] tracking-tight text-[var(--text-primary)]"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Marketing That{" "}
-            <span
-              className="relative inline-block"
-              style={{
-                WebkitTextStroke: "1.5px var(--accent-warm)",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
-              Actually Grows
-              {/* Animated underline */}
-              <span
-                className="absolute -bottom-1 left-0 h-[2px] rounded-full bg-gradient-to-r from-[var(--accent-warm)] to-[var(--accent-sage)]"
-                style={{
-                  width: isLoaded ? "100%" : "0%",
-                  transition: "width 0.9s cubic-bezier(0.16,1,0.3,1) 0.6s",
-                }}
-                aria-hidden="true"
-              />
-            </span>{" "}
-            Your Business
+            Turn ad spend into <span className="text-[var(--accent-warm)]">predictable revenue</span>
           </h1>
 
-          {/* ── Sub-headline — tackles objection, builds trust ────────────── */}
           <p
-            className="mb-8 max-w-md text-base leading-[1.75] text-[var(--text-muted)]"
+            className="mb-7 max-w-xl text-base leading-[1.75] text-[var(--text-muted)]"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Stop guessing what works. We build data-backed campaigns that fill
-            your pipeline — or you don&apos;t pay.{" "}
-            <span className="font-semibold text-[var(--text-primary)]">
-              Results guaranteed, zero jargon.
-            </span>
+            We launch and optimize campaigns that bring qualified leads, lower acquisition costs,
+            and prove ROI weekly. <span className="font-semibold text-[var(--text-primary)]">Get your free growth plan in 48 hours.</span>
           </p>
 
-          {/* ── Social-proof strip ───────────────────────────────────────── */}
-          <div className="flex flex-wrap items-center gap-5">
+          <ul className="mb-8 grid w-full max-w-xl gap-2.5 sm:grid-cols-2">
+            {proofItems.map((item) => (
+              <li key={item} className="flex items-start gap-2.5 text-sm text-[var(--text-muted)]">
+                <span
+                  className="mt-[2px] inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[var(--accent-warm)]/20 text-[10px] font-bold text-[var(--accent-warm)]"
+                  aria-hidden="true"
+                >
+                  v
+                </span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
 
-            {/* Star rating */}
+          <div className="flex flex-wrap items-center gap-4">
             <div className="flex items-center gap-2">
               <div className="flex gap-0.5" aria-label="5 star rating">
                 {Array.from({ length: 5 }).map((_, i) => (
@@ -168,41 +160,36 @@ export default function Hero() {
                   </svg>
                 ))}
               </div>
-              <span className="text-sm font-semibold text-[var(--text-primary)]">4.9</span>
-              <span className="text-xs text-[var(--text-muted)]">/ Trustpilot</span>
+              <span className="text-sm font-semibold text-[var(--text-primary)]">4.9/5</span>
+              <span className="text-xs text-[var(--text-muted)]">from clients</span>
             </div>
 
-            <div className="h-4 w-px bg-[var(--border-subtle)]" aria-hidden="true" />
+            <div className="hidden h-4 w-px bg-[var(--border-subtle)] sm:block" aria-hidden="true" />
 
-            {/* Client count */}
             <p className="text-sm text-[var(--text-muted)]">
-              <span className="font-bold text-[var(--text-primary)]">50+</span>{" "}
-              international clients
+              <span className="font-bold text-[var(--text-primary)]">50+</span> brands scaled
             </p>
 
-            <div className="h-4 w-px bg-[var(--border-subtle)]" aria-hidden="true" />
-
-            {/* Projects */}
-            <p className="text-sm text-[var(--text-muted)]">
-              <span className="font-bold text-[var(--text-primary)]">150+</span>{" "}
-              projects delivered
-            </p>
+            <a
+              href="#case-studies"
+              className="shrink-0 rounded-full border border-[var(--border-subtle)] bg-white/80 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-[var(--text-primary)] shadow-sm transition-colors hover:border-[var(--accent-warm)] hover:text-[var(--accent-warm)]"
+              style={{ fontFamily: "var(--font-mono)" }}
+            >
+              See case studies
+            </a>
           </div>
         </div>
 
-        {/* ── RIGHT COLUMN: conversion form ──────────────────────────────── */}
         <div
           className={`mt-12 w-full transition-all duration-700 lg:mt-0 lg:w-[420px] xl:w-[460px] ${
-            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            isLoaded ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
           }`}
           style={{ transitionDelay: "0.25s" }}
         >
-          {/* Form card */}
           <div
             className="relative overflow-hidden rounded-2xl border border-[var(--border-subtle)] bg-white/70 p-8 shadow-2xl backdrop-blur-xl"
             style={{ boxShadow: "0 32px 80px rgba(119,185,62,0.12), 0 8px 24px rgba(0,0,0,0.06)" }}
           >
-            {/* Top accent bar */}
             <div
               className="absolute left-0 top-0 h-1 w-full rounded-t-2xl"
               style={{ background: "linear-gradient(90deg, var(--accent-warm), var(--accent-sage))" }}
@@ -211,74 +198,24 @@ export default function Hero() {
 
             {!submitted ? (
               <>
-                {/* Card headline */}
                 <div className="mb-6">
                   <p
                     className="text-xs font-semibold uppercase tracking-widest text-[var(--accent-warm)]"
                     style={{ fontFamily: "var(--font-mono)" }}
                   >
-                    Free Strategy Call
+                    Free Growth Plan
                   </p>
                   <h2
                     className="mt-1 text-2xl font-bold text-[var(--text-primary)]"
                     style={{ fontFamily: "var(--font-display)" }}
                   >
-                    Let&apos;s grow your brand
+                    See how many leads you can unlock
                   </h2>
-                  <p className="mt-1 text-sm text-[var(--text-muted)]">
-                    No commitment. Get a custom growth plan in 48 h.
-                  </p>
+                  <p className="mt-1 text-sm text-[var(--text-muted)]">Takes 30 seconds. No sales pressure.</p>
                 </div>
 
-                {/* ─── Form ─────────────────────────────────────────────── */}
                 <form onSubmit={handleSubmit} noValidate aria-label="Lead capture form">
-
-                  {/* Name field */}
                   <div className="mb-4">
-                    <label
-                      htmlFor="hero-name"
-                      className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]"
-                      style={{ fontFamily: "var(--font-mono)" }}
-                    >
-                      Full Name
-                    </label>
-                    <div className="relative">
-                      <input
-                        id="hero-name"
-                        name="name"
-                        type="text"
-                        autoComplete="name"
-                        placeholder="Jane Smith"
-                        value={formData.name}
-                        onChange={handleChange}
-                        onFocus={() => setFocused("name")}
-                        onBlur={() => setFocused(null)}
-                        required
-                        aria-required="true"
-                        className={`
-                          w-full rounded-xl border bg-[var(--bg-secondary)] px-4 py-3.5 text-sm text-[var(--text-primary)]
-                          placeholder:text-slate-400 outline-none transition-all duration-200
-                          ${focused === "name"
-                            ? "border-[var(--accent-warm)] shadow-[0_0_0_3px_rgba(119,185,62,0.18)]"
-                            : "border-[var(--border-subtle)] hover:border-[var(--accent-warm)]/50"
-                          }
-                        `}
-                        style={{ fontFamily: "var(--font-display)" }}
-                      />
-                      {/* Focus indicator */}
-                      {focused === "name" && (
-                        <span
-                          className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[var(--accent-warm)]"
-                          aria-hidden="true"
-                        >
-                          ✦
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Email field */}
-                  <div className="mb-6">
                     <label
                       htmlFor="hero-email"
                       className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]"
@@ -286,41 +223,52 @@ export default function Hero() {
                     >
                       Work Email
                     </label>
-                    <div className="relative">
-                      <input
-                        id="hero-email"
-                        name="email"
-                        type="email"
-                        autoComplete="email"
-                        placeholder="jane@company.com"
-                        value={formData.email}
-                        onChange={handleChange}
-                        onFocus={() => setFocused("email")}
-                        onBlur={() => setFocused(null)}
-                        required
-                        aria-required="true"
-                        className={`
-                          w-full rounded-xl border bg-[var(--bg-secondary)] px-4 py-3.5 text-sm text-[var(--text-primary)]
-                          placeholder:text-slate-400 outline-none transition-all duration-200
-                          ${focused === "email"
-                            ? "border-[var(--accent-warm)] shadow-[0_0_0_3px_rgba(119,185,62,0.18)]"
-                            : "border-[var(--border-subtle)] hover:border-[var(--accent-warm)]/50"
-                          }
-                        `}
-                        style={{ fontFamily: "var(--font-display)" }}
-                      />
-                      {focused === "email" && (
-                        <span
-                          className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[var(--accent-warm)]"
-                          aria-hidden="true"
-                        >
-                          ✦
-                        </span>
-                      )}
-                    </div>
+                    <input
+                      id="hero-email"
+                      name="email"
+                      type="email"
+                      autoComplete="email"
+                      placeholder="jane@company.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                      aria-invalid={Boolean(errors.email)}
+                      required
+                      aria-required="true"
+                      className={`
+                        w-full rounded-xl border bg-[var(--bg-secondary)] px-4 py-3.5 text-sm text-[var(--text-primary)]
+                        placeholder:text-slate-400 outline-none transition-all duration-200
+                        ${
+                          errors.email
+                            ? "border-red-400 focus:border-red-500 focus:shadow-[0_0_0_3px_rgba(248,113,113,0.2)]"
+                            : "border-[var(--border-subtle)] focus:border-[var(--accent-warm)] focus:shadow-[0_0_0_3px_rgba(119,185,62,0.18)] hover:border-[var(--accent-warm)]/50"
+                        }
+                      `}
+                      style={{ fontFamily: "var(--font-display)" }}
+                    />
+                    {errors.email ? <p className="mt-1 text-xs text-red-500">{errors.email}</p> : null}
                   </div>
 
-                  {/* CTA Button */}
+                  <div className="mb-6">
+                    <label
+                      htmlFor="hero-website"
+                      className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]"
+                      style={{ fontFamily: "var(--font-mono)" }}
+                    >
+                      Website (optional)
+                    </label>
+                    <input
+                      id="hero-website"
+                      name="website"
+                      type="text"
+                      autoComplete="url"
+                      placeholder="yourcompany.com"
+                      value={formData.website}
+                      onChange={handleChange}
+                      className="w-full rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)] px-4 py-3.5 text-sm text-[var(--text-primary)] placeholder:text-slate-400 outline-none transition-all duration-200 hover:border-[var(--accent-warm)]/50 focus:border-[var(--accent-warm)] focus:shadow-[0_0_0_3px_rgba(119,185,62,0.18)]"
+                      style={{ fontFamily: "var(--font-display)" }}
+                    />
+                  </div>
+
                   <button
                     type="submit"
                     className="
@@ -337,13 +285,12 @@ export default function Hero() {
                     }}
                     aria-label="Get your free marketing strategy"
                   >
-                    {/* Shimmer sweep on hover */}
                     <span
                       className="absolute inset-0 -translate-x-full skew-x-12 bg-white/20 transition-transform duration-500 group-hover:translate-x-full"
                       aria-hidden="true"
                     />
                     <span className="relative flex items-center justify-center gap-2">
-                      Get My Free Strategy
+                      Get My Free Growth Plan
                       <svg
                         className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
                         fill="none"
@@ -356,19 +303,12 @@ export default function Hero() {
                     </span>
                   </button>
 
-                  {/* Trust micro-copy */}
-                  <p className="mt-3 text-center text-[11px] text-[var(--text-muted)]">
-                    🔒 No spam. No credit card. 100% free.
-                  </p>
+                  <p className="mt-3 text-center text-[11px] text-[var(--text-muted)]">No spam. No credit card. Cancel anytime.</p>
+                  <p className="mt-1 text-center text-[11px] font-semibold text-[var(--text-primary)]">7 onboarding slots left this month</p>
                 </form>
               </>
             ) : (
-              /* ── Success state ─────────────────────────────────────────── */
-              <div
-                className="flex flex-col items-center py-8 text-center"
-                role="status"
-                aria-live="polite"
-              >
+              <div className="flex flex-col items-center py-8 text-center" role="status" aria-live="polite">
                 <div
                   className="mb-4 flex h-16 w-16 items-center justify-center rounded-full"
                   style={{ background: "rgba(119,185,62,0.12)" }}
@@ -383,21 +323,16 @@ export default function Hero() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3
-                  className="mb-2 text-xl font-bold text-[var(--text-primary)]"
-                  style={{ fontFamily: "var(--font-display)" }}
-                >
-                  You&apos;re on the list!
+                <h3 className="mb-2 text-xl font-bold text-[var(--text-primary)]" style={{ fontFamily: "var(--font-display)" }}>
+                  You are on the list
                 </h3>
                 <p className="text-sm text-[var(--text-muted)]">
-                  Expect a custom strategy in your inbox within{" "}
-                  <span className="font-semibold text-[var(--accent-warm)]">48 hours</span>.
+                  Check your inbox. Your custom plan will arrive within <span className="font-semibold text-[var(--accent-warm)]">48 hours</span>.
                 </p>
               </div>
             )}
           </div>
 
-          {/* Below-card platform labels */}
           <div className="mt-5 flex items-center justify-center gap-6">
             {platforms.map((name) => (
               <span
@@ -412,17 +347,16 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ─── Bottom metrics bar ────────────────────────────────────────────── */}
       <div
-        className={`absolute bottom-0 left-0 w-full transition-all duration-700 ${
-          isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+        className={`relative z-20 w-full transition-all duration-700 ${
+          isLoaded ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
         }`}
         style={{
           transitionDelay: "0.55s",
           background: "linear-gradient(90deg, var(--accent-warm) 0%, var(--accent-sage) 100%)",
         }}
       >
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px md:grid-cols-4">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-px sm:grid-cols-3">
           {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col items-center py-5 text-center">
               <span
