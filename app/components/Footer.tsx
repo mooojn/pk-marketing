@@ -1,4 +1,5 @@
 "use client";
+import { services } from "../data/services";
 
 export default function Footer() {
     return (
@@ -82,17 +83,10 @@ export default function Footer() {
                             Services
                         </h4>
                         <ul className="space-y-3">
-                            {[
-                                'Website Development',
-                                'Digital Marketing',
-                                'SEO Services',
-                                'Content Writing',
-                                'Social Media Marketing',
-                                'PPC Management'
-                            ].map((item) => (
-                                <li key={item}>
+                            {services.map((item, id) => (
+                                <li key={id}>
                                     <a
-                                        href="#"
+                                        href="#services"
                                         className="text-base transition-all duration-300 inline-flex items-center gap-2"
                                         style={{
                                             fontFamily: 'var(--font-display)',
@@ -107,7 +101,7 @@ export default function Footer() {
                                             e.currentTarget.style.paddingLeft = '0';
                                         }}
                                     >
-                                        {item}
+                                        {item.title}
                                     </a>
                                 </li>
                             ))}

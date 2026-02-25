@@ -130,8 +130,7 @@ const Pricing = () => {
                             lineHeight: '1.8'
                         }}
                     >
-                        No hidden fees, no surprises. Choose the package that fits your growth stage,
-                        or contact us for a tailored solution designed around your unique goals.
+                        Choose the package that fits your goals, or get a custom solution tailored to you.
                     </p>
                 </div>
 
