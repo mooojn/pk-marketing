@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Study = {
     title: string;
@@ -14,6 +14,7 @@ type Study = {
 
 export default function CaseStudies() {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+    const [activeStudy, setActiveStudy] = useState<Study | null>(null);
 
     const studies: Study[] = [
         {
@@ -44,6 +45,24 @@ export default function CaseStudies() {
             color: "var(--accent-sage)",
         },
     ];
+
+    useEffect(() => {
+        const onKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") {
+                setActiveStudy(null);
+            }
+        };
+
+        window.addEventListener("keydown", onKeyDown);
+        return () => window.removeEventListener("keydown", onKeyDown);
+    }, []);
+
+    useEffect(() => {
+        document.body.style.overflow = activeStudy ? "hidden" : "";
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [activeStudy]);
 
     return (
         <section id="case-studies" className="py-8 lg:py-10" style={{ background: "var(--bg-primary)" }}>
@@ -78,7 +97,7 @@ export default function CaseStudies() {
                     {studies.map((study, index) => (
                         <div
                             key={index}
-                            className="group relative flex flex-col h-full rounded-2xl overflow-hidden transition-all duration-500"
+                            className="group relative flex flex-col h-full rounded-2xl overflow-hidden transition-all duration-500 cursor-pointer"
                             style={{
                                 background: "#FFFFFF",
                                 border: "1px solid var(--border-subtle)",
@@ -90,6 +109,7 @@ export default function CaseStudies() {
                             }}
                             onMouseEnter={() => setHoveredIndex(index)}
                             onMouseLeave={() => setHoveredIndex(null)}
+                            onClick={() => setActiveStudy(study)}
                         >
                             <div className="h-64 relative overflow-hidden bg-slate-100">
                                 <img
@@ -144,8 +164,13 @@ export default function CaseStudies() {
                                 </div>
 
                                 <button
+                                    type="button"
                                     className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider transition-all duration-300 group/btn"
                                     style={{ color: study.color }}
+                                    onClick={(event) => {
+                                        event.stopPropagation();
+                                        setActiveStudy(study);
+                                    }}
                                 >
                                     <span>Read Case Study</span>
                                     <svg
@@ -162,6 +187,101 @@ export default function CaseStudies() {
                     ))}
                 </div>
             </div>
+
+            {activeStudy && (
+                <div
+                    className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label={`${activeStudy.title} case study details`}
+                    onClick={() => setActiveStudy(null)}
+                >
+                    <div className="absolute inset-0 bg-slate-950/70 backdrop-blur-sm" />
+
+                    <div
+                        className="relative z-10 w-full max-w-5xl overflow-hidden rounded-2xl border border-white/20 bg-white shadow-2xl"
+                        onClick={(event) => event.stopPropagation()}
+                    >
+                        <button
+                            type="button"
+                            className="absolute right-4 top-4 z-20 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-slate-700 shadow-md transition-colors hover:bg-white hover:text-slate-900"
+                            onClick={() => setActiveStudy(null)}
+                            aria-label="Close case study modal"
+                        >
+                            <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 6l12 12M18 6l-12 12" />
+                            </svg>
+                        </button>
+
+                        <div className="grid lg:grid-cols-2">
+                            <div className="relative min-h-[260px] bg-slate-100">
+                                <img
+                                    src={activeStudy.image}
+                                    alt={activeStudy.title}
+                                    className="h-full w-full object-cover"
+                                />
+                            </div>
+
+                            <div className="p-6 sm:p-8 lg:p-10">
+                                <span
+                                    className="inline-flex rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider"
+                                    style={{
+                                        fontFamily: "var(--font-mono)",
+                                        color: activeStudy.color,
+                                        background: `${activeStudy.color}18`,
+                                        border: `1px solid ${activeStudy.color}35`,
+                                    }}
+                                >
+                                    {activeStudy.category}
+                                </span>
+
+                                <h3
+                                    className="mt-4 text-3xl font-bold leading-tight"
+                                    style={{ fontFamily: "var(--font-display)", color: "var(--text-primary)" }}
+                                >
+                                    {activeStudy.title}
+                                </h3>
+
+                                <p className="mt-4 text-base leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                                    {activeStudy.description}
+                                </p>
+
+                                <div className="mt-6 rounded-xl border p-4" style={{ borderColor: "var(--border-subtle)" }}>
+                                    <p
+                                        className="text-xs font-bold uppercase tracking-[0.14em]"
+                                        style={{ fontFamily: "var(--font-mono)", color: "var(--text-muted)" }}
+                                    >
+                                        Campaign Result
+                                    </p>
+                                    <p
+                                        className="mt-2 text-2xl font-extrabold"
+                                        style={{ fontFamily: "var(--font-display)", color: activeStudy.color }}
+                                    >
+                                        {activeStudy.result}
+                                    </p>
+                                </div>
+
+                                <div className="mt-6 flex flex-wrap gap-2.5">
+                                    {activeStudy.highlights.map((item) => (
+                                        <span
+                                            key={item}
+                                            className="rounded-full border px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide"
+                                            style={{
+                                                fontFamily: "var(--font-mono)",
+                                                color: activeStudy.color,
+                                                borderColor: `${activeStudy.color}33`,
+                                                background: `${activeStudy.color}12`,
+                                            }}
+                                        >
+                                            {item}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </section>
     );
 }
