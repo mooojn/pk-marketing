@@ -4,6 +4,25 @@ import React, { useState } from 'react';
 
 const Testimonials = () => {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+    const renderStars = (rating: number) => {
+        const fullStars = Math.floor(rating);
+        const hasHalfStar = rating - fullStars >= 0.5;
+        const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
+        return (
+            <div className="flex items-center gap-1" aria-label={`Rated ${rating} out of 5`}>
+                {[...Array(fullStars)].map((_, i) => (
+                    <span key={`full-${i}`} className="text-base leading-none" style={{ color: '#F59E0B' }}>★</span>
+                ))}
+                {hasHalfStar && (
+                    <span key="half" className="text-base leading-none" style={{ color: '#F59E0B', opacity: 0.6 }}>★</span>
+                )}
+                {[...Array(emptyStars)].map((_, i) => (
+                    <span key={`empty-${i}`} className="text-base leading-none" style={{ color: 'var(--border-subtle)' }}>★</span>
+                ))}
+            </div>
+        );
+    };
 
     const testimonials = [
         {
@@ -11,6 +30,7 @@ const Testimonials = () => {
             author: "Sarah Jenkins",
             role: "Marketing Director",
             company: "TechFlow",
+            rating: 5.0,
             accent: "var(--accent-warm)" // Indigo
         },
         {
@@ -18,6 +38,7 @@ const Testimonials = () => {
             author: "Michael Chen",
             role: "CEO",
             company: "Vertex Innovations",
+            rating: 4.8,
             accent: "var(--accent-sage)" // Emerald
         },
         {
@@ -25,6 +46,7 @@ const Testimonials = () => {
             author: "Emma Rodriguez",
             role: "Founder",
             company: "Spherule",
+            rating: 4.7,
             accent: "var(--accent-coral)" // Rose
         }
     ];
@@ -112,6 +134,20 @@ const Testimonials = () => {
                             >
                                 "{testimonial.quote}"
                             </p>
+
+                            {/* Rating */}
+                            <div className="flex items-center justify-between mb-8">
+                                {renderStars(testimonial.rating)}
+                                <span
+                                    className="text-sm font-semibold"
+                                    style={{
+                                        fontFamily: 'var(--font-mono)',
+                                        color: 'var(--text-primary)'
+                                    }}
+                                >
+                                    {testimonial.rating.toFixed(1)}/5
+                                </span>
+                            </div>
 
                             {/* Author Info */}
                             <div className="flex items-center gap-4">
