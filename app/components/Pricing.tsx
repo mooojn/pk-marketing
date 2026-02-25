@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 
 const Pricing = () => {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+    const baseCardBorder = "rgba(15, 23, 42, 0.1)";
+    const baseCardShadow = "0 14px 34px -20px rgba(15, 23, 42, 0.32), 0 1px 0 rgba(255,255,255,0.9) inset";
 
     const plans = [
         {
@@ -138,16 +140,16 @@ const Pricing = () => {
                     {plans.map((plan, index) => (
                         <div
                             key={index}
-                            className={`relative p-8 lg:p-10 transition-all duration-500 rounded-lg group ${plan.popular ? 'lg:-mt-8 lg:mb-8 z-10' : ''}`}
+                            className={`relative p-8 lg:p-10 transition-all duration-500 rounded-2xl group ${plan.popular ? 'lg:-mt-8 lg:mb-8 z-10' : ''}`}
                             style={{
-                                background: plan.popular ? 'var(--bg-primary)' : 'rgba(255, 255, 255, 0.6)',
-                                border: `1px solid ${hoveredIndex === index ? plan.accent : 'var(--border-subtle)'}`,
+                                background: hoveredIndex === index
+                                    ? "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(248,250,252,0.98) 100%)"
+                                    : "linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(248,250,252,0.92) 100%)",
+                                border: `1px solid ${hoveredIndex === index ? plan.accent : baseCardBorder}`,
                                 backdropFilter: 'blur(10px)',
                                 boxShadow: hoveredIndex === index
-                                    ? `0 20px 40px -10px ${plan.bgAccent}`
-                                    : plan.popular
-                                        ? '0 10px 30px -5px rgba(0,0,0,0.05)'
-                                        : 'none',
+                                    ? `0 24px 45px -18px ${plan.bgAccent}, ${baseCardShadow}`
+                                    : baseCardShadow,
                                 transform: hoveredIndex === index ? 'translateY(-10px)' : 'translateY(0)'
                             }}
                             onMouseEnter={() => setHoveredIndex(index)}

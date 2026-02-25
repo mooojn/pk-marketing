@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 
 const DetailedServices = () => {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+    const baseCardBorder = "rgba(15, 23, 42, 0.1)";
+    const baseCardShadow = "0 14px 34px -20px rgba(15, 23, 42, 0.32), 0 1px 0 rgba(255,255,255,0.9) inset";
 
     const capabilities = [
         {
@@ -166,14 +168,16 @@ const DetailedServices = () => {
                     {capabilities.map((item, index) => (
                         <div
                             key={index}
-                            className="group relative p-8 transition-all duration-500 rounded-lg"
+                            className="group relative p-8 transition-all duration-500 rounded-2xl"
                             style={{
-                                background: 'rgba(255, 255, 255, 0.6)',
-                                border: `1px solid ${hoveredIndex === index ? item.accent : 'var(--border-subtle)'}`,
+                                background: hoveredIndex === index
+                                    ? "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(248,250,252,0.98) 100%)"
+                                    : "linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(248,250,252,0.92) 100%)",
+                                border: `1px solid ${hoveredIndex === index ? item.accent : baseCardBorder}`,
                                 backdropFilter: 'blur(10px)',
                                 boxShadow: hoveredIndex === index
-                                    ? `0 20px 40px -10px ${item.bgAccent}`
-                                    : 'none',
+                                    ? `0 24px 45px -18px ${item.bgAccent}, ${baseCardShadow}`
+                                    : baseCardShadow,
                                 transform: hoveredIndex === index ? 'translateY(-10px)' : 'translateY(0)'
                             }}
                             onMouseEnter={() => setHoveredIndex(index)}
