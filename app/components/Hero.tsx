@@ -62,7 +62,11 @@ export default function Hero() {
 
   const proofItems: string[] = ["No long-term contracts", "Weekly performance reporting"];
 
-  const platforms: string[] = ["Google", "Clutch", "Trustpilot"];
+  const platforms = [
+    { name: "Google", key: "google" },
+    { name: "Trustpilot", key: "trustpilot" },
+    { name: "Clutch", key: "clutch" },
+  ] as const;
 
   return (
     <section
@@ -172,11 +176,62 @@ export default function Hero() {
 
             <a
               href="#case-studies"
-              className="shrink-0 rounded-full border border-[var(--border-subtle)] bg-white/80 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-[var(--text-primary)] shadow-sm transition-colors hover:border-[var(--accent-warm)] hover:text-[var(--accent-warm)]"
+              className="group relative shrink-0 overflow-hidden rounded-full border border-[var(--accent-warm)]/35 bg-white/95 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--text-primary)] shadow-[0_8px_24px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--accent-warm)] hover:shadow-[0_14px_30px_rgba(119,185,62,0.25)]"
               style={{ fontFamily: "var(--font-mono)" }}
             >
-              See case studies
+              <span
+                className="absolute inset-0 bg-gradient-to-r from-[var(--accent-warm)]/0 via-[var(--accent-warm)]/10 to-[var(--accent-sage)]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                aria-hidden="true"
+              />
+              <span className="relative flex items-center gap-1.5">
+                See case studies
+                <svg
+                  className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M5 12h14m0 0l-4-4m4 4l-4 4" />
+                </svg>
+              </span>
             </a>
+          </div>
+
+          <div className="mt-4 flex flex-wrap items-center gap-2.5">
+            {platforms.map((platform) => (
+              <span
+                key={platform.key}
+                className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-subtle)] bg-white/90 px-3 py-1.5 shadow-sm"
+                aria-label={`${platform.name} reviews`}
+              >
+                {platform.key === "google" && (
+                  <svg className="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M21.35 12.24c0-.72-.06-1.24-.2-1.78H12v3.37h5.37c-.11.84-.7 2.1-2.01 2.95l-.02.11 2.92 2.22.2.02c1.83-1.65 2.89-4.09 2.89-6.89Z" fill="#4285F4" />
+                    <path d="M12 21.5c2.63 0 4.84-.84 6.46-2.27l-3.08-2.35c-.82.56-1.92.95-3.38.95-2.58 0-4.77-1.67-5.55-3.99l-.11.01-3.04 2.3-.04.1C5 19.4 8.25 21.5 12 21.5Z" fill="#34A853" />
+                    <path d="M6.45 13.84A5.83 5.83 0 0 1 6.13 12c0-.64.12-1.26.31-1.84l-.01-.12-3.07-2.34-.1.05A9.38 9.38 0 0 0 2.2 12c0 1.52.37 2.96 1.06 4.25l3.19-2.41Z" fill="#FBBC05" />
+                    <path d="M12 6.18c1.83 0 3.07.77 3.77 1.42l2.75-2.63C16.84 3.45 14.63 2.5 12 2.5c-3.75 0-7 2.1-8.74 5.25l3.18 2.41c.79-2.32 2.98-3.98 5.56-3.98Z" fill="#EA4335" />
+                  </svg>
+                )}
+                {platform.key === "trustpilot" && (
+                  <svg className="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="#00B67A" d="M12 2.5l2.77 5.62 6.2.9-4.48 4.36 1.06 6.18L12 16.76 6.45 19.56l1.06-6.18L3.03 9.02l6.2-.9L12 2.5Z" />
+                  </svg>
+                )}
+                {platform.key === "clutch" && (
+                  <svg className="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="8.5" fill="none" stroke="#0F172A" strokeWidth="3" />
+                    <circle cx="16.6" cy="7.4" r="2.4" fill="#EF4444" />
+                  </svg>
+                )}
+                <span
+                  className="text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--text-primary)]"
+                  style={{ fontFamily: "var(--font-mono)" }}
+                >
+                  {platform.name}
+                </span>
+              </span>
+            ))}
           </div>
         </div>
 
@@ -333,17 +388,6 @@ export default function Hero() {
             )}
           </div>
 
-          <div className="mt-5 flex items-center justify-center gap-6">
-            {platforms.map((name) => (
-              <span
-                key={name}
-                className="text-[10px] font-bold uppercase tracking-widest text-slate-400"
-                style={{ fontFamily: "var(--font-mono)" }}
-              >
-                {name}
-              </span>
-            ))}
-          </div>
         </div>
       </div>
 
