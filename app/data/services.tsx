@@ -1,16 +1,11 @@
+import { Figma, Orbit, SearchCheck } from "lucide-react";
+
 export const services = [
     {
         title: "Meta Ads Management",
         description: "Data-driven ad campaigns on Facebook and Instagram to scale ROI.",
         icon: (
-            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path
-                    d="M3.5 15.2c1.2-4.9 4.4-8.4 6.8-8.4 2.9 0 4.3 3.8 5.7 6.1 1.1 1.9 2.1 2.7 3.3 2.7 1.2 0 1.9-.7 2.2-1.8M20.5 8.8c-1.2 4.9-4.4 8.4-6.8 8.4-2.9 0-4.3-3.8-5.7-6.1-1.1-1.9-2.1-2.7-3.3-2.7-1.2 0-1.9.7-2.2 1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.8}
-                />
-            </svg>
+            <Orbit className="w-6 h-6" strokeWidth={1.8} />
         ),
         accent: "var(--accent-purple)",
         bgAccent: "rgba(24, 119, 242, 0.1)"
@@ -44,13 +39,7 @@ export const services = [
         title: "Graphic Designing",
         description: "Complete visual identity systems, logos, and stunning brand collateral.",
         icon: (
-            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
-                <circle cx="9" cy="6.5" r="3.5" fill="#F24E1E" />
-                <circle cx="9" cy="12" r="3.5" fill="#A259FF" />
-                <circle cx="9" cy="17.5" r="3.5" fill="#1ABCFE" />
-                <circle cx="14.5" cy="6.5" r="3.5" fill="#FF7262" />
-                <path d="M11 17.5a3.5 3.5 0 117 0 3.5 3.5 0 01-7 0z" fill="#0ACF83" />
-            </svg>
+            <Figma className="w-6 h-6" strokeWidth={1.8} />
         ),
         accent: "var(--accent-gold)",
         bgAccent: "rgba(245, 158, 11, 0.1)"
@@ -70,20 +59,7 @@ export const services = [
         title: "SEO (On-Site & Off-Site)",
         description: "Full-spectrum SEO strategies to dominate search rankings and drive organic traffic.",
         icon: (
-            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
-                <rect x="2.5" y="4" width="19" height="16" rx="4" fill="currentColor" opacity="0.14" />
-                <text
-                    x="12"
-                    y="15"
-                    textAnchor="middle"
-                    fontSize="7"
-                    fontWeight="700"
-                    fill="currentColor"
-                    style={{ letterSpacing: "0.08em" }}
-                >
-                    SEO
-                </text>
-            </svg>
+            <SearchCheck className="w-6 h-6" strokeWidth={1.8} />
         ),
         accent: "var(--accent-teal)",
         bgAccent: "rgba(13, 148, 136, 0.1)"
