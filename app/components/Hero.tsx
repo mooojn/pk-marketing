@@ -55,9 +55,10 @@ export default function Hero() {
   }
 
   const stats: Stat[] = [
-    { number: "154%", label: "Average Lead Growth" },
-    { number: "93", label: "Campaigns Scaled" },
-    { number: "48h", label: "To First Plan" },
+    { number: "150+", label: "Brands Scaled" },
+    { number: "1M+", label: "Traffic Generated" },
+    { number: "100+", label: "Campaigns Scaled" },
+    { number: "4.9/5", label: "Client Rating" },
   ];
 
   const proofItems: string[] = ["No long-term contracts", "Weekly performance reporting"];
@@ -124,7 +125,7 @@ export default function Hero() {
             className="mb-5 text-[clamp(2rem,3.8vw,3.35rem)] font-extrabold leading-[1.08] tracking-tight text-[var(--text-primary)]"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Turn ad spend into <span className="text-[var(--accent-warm)]">predictable revenue</span>
+            <span className="text-[var(--accent-warm)]">Performance marketing</span> that turns clicks into revenue.
           </h1>
 
           <p
@@ -400,17 +401,17 @@ export default function Hero() {
           background: "linear-gradient(90deg, var(--accent-warm) 0%, var(--accent-sage) 100%)",
         }}
       >
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-px sm:grid-cols-3">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px lg:grid-cols-4">
           {stats.map((stat) => (
-            <div key={stat.label} className="flex flex-col items-center py-5 text-center">
+            <div key={stat.label} className="flex flex-col items-center py-6 text-center md:py-7">
               <span
-                className="text-xl font-bold text-white md:text-2xl"
+                className="text-2xl font-bold text-white sm:text-3xl md:text-[2rem]"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 {stat.number}
               </span>
               <span
-                className="mt-0.5 text-[10px] uppercase tracking-wider text-white/75"
+                className="mt-1 text-[11px] uppercase tracking-[0.12em] text-white/80 sm:text-xs"
                 style={{ fontFamily: "var(--font-mono)" }}
               >
                 {stat.label}
