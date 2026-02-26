@@ -3,8 +3,13 @@
 import { useState } from "react";
 
 export default function ContactForm() {
+    const [fullName, setFullName] = useState<string>("");
+    const [phoneNumber, setPhoneNumber] = useState<string>("");
     const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
     const [budget, setBudget] = useState<string>("");
+    const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+    const [submitted, setSubmitted] = useState<boolean>(false);
+    const [submitError, setSubmitError] = useState<string>("");
 
     const packages = [
         "Basic Package",
@@ -18,6 +23,46 @@ export default function ContactForm() {
         "60k - 100k PKR",
         "100k+ PKR"
     ];
+
+    async function handleSubmit(e: React.FormEvent<HTMLFormElement>): Promise<void> {
+        e.preventDefault();
+        if (!fullName.trim() || !phoneNumber.trim()) {
+            setSubmitError("Please enter your full name and phone number.");
+            return;
+        }
+
+        setIsSubmitting(true);
+        setSubmitError("");
+
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    formType: "contact",
+                    source: "Contact Form",
+                    fullName: fullName.trim(),
+                    phoneNumber: phoneNumber.trim(),
+                    selectedPackage: selectedPackage ?? "Not selected",
+                    budget: budget || "Not selected",
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to submit");
+            }
+
+            setSubmitted(true);
+            setFullName("");
+            setPhoneNumber("");
+            setSelectedPackage(null);
+            setBudget("");
+        } catch {
+            setSubmitError("Could not submit right now. Please try again in a moment.");
+        } finally {
+            setIsSubmitting(false);
+        }
+    }
 
     return (
         <section id="contact-form" className="relative py-8 lg:py-10 overflow-hidden" style={{ background: 'var(--bg-secondary)' }}>
@@ -97,7 +142,7 @@ export default function ContactForm() {
                             boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.05)'
                         }}
                     >
-                        <form className="space-y-8">
+                        <form className="space-y-8" onSubmit={handleSubmit}>
                             {/* Personal Info */}
                             <div className="space-y-6">
                                 <div>
@@ -105,6 +150,9 @@ export default function ContactForm() {
                                     <input
                                         type="text"
                                         placeholder="Ayesha Khan"
+                                        value={fullName}
+                                        onChange={(e) => setFullName(e.target.value)}
+                                        required
                                         className="w-full px-4 py-4 rounded-xl text-base outline-none transition-all duration-300 placeholder:text-gray-400 border border-gray-200 focus:border-transparent focus:ring-2"
                                         style={{
                                             background: '#F9FAFB', // Light gray background for contrast
@@ -118,6 +166,9 @@ export default function ContactForm() {
                                     <input
                                         type="tel"
                                         placeholder="+92 321 4567890"
+                                        value={phoneNumber}
+                                        onChange={(e) => setPhoneNumber(e.target.value)}
+                                        required
                                         className="w-full px-4 py-4 rounded-xl text-base outline-none transition-all duration-300 placeholder:text-gray-400 border border-gray-200 focus:border-transparent focus:ring-2"
                                         style={{
                                             background: '#F9FAFB', // Light gray background for contrast
@@ -180,13 +231,22 @@ export default function ContactForm() {
                                     background: 'var(--accent-warm)',
                                     color: '#FFFFFF'
                                 }}
+                                disabled={isSubmitting}
                             >
-                                <span className="relative z-10">Get Your Free Quote</span>
+                                <span className="relative z-10">{isSubmitting ? "Sending..." : "Get Your Free Quote"}</span>
                                 <div
                                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                                     style={{ background: 'linear-gradient(45deg, var(--accent-warm), var(--accent-coral))' }}
                                 />
                             </button>
+                            {submitError ? (
+                                <p className="text-sm text-red-500">{submitError}</p>
+                            ) : null}
+                            {submitted ? (
+                                <p className="text-sm font-semibold" style={{ color: 'var(--accent-warm)' }}>
+                                    Submission received. We will contact you shortly.
+                                </p>
+                            ) : null}
                         </form>
                     </div>
                 </div>

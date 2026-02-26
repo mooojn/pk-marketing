@@ -16,6 +16,8 @@ export default function Hero() {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [formData, setFormData] = useState<FormData>({ email: "", website: "" });
   const [submitted, setSubmitted] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [submitError, setSubmitError] = useState<string>("");
   const [errors, setErrors] = useState<Partial<FormData>>({});
 
   useEffect(() => {
@@ -46,12 +48,35 @@ export default function Hero() {
     return Object.keys(nextErrors).length === 0;
   }
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>): Promise<void> {
     e.preventDefault();
     if (!validate()) return;
 
-    // TODO: wire this to your lead endpoint / CRM
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formType: "hero",
+          source: "Hero Form",
+          email: formData.email.trim(),
+          website: formData.website.trim(),
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit");
+      }
+
+      setSubmitted(true);
+    } catch {
+      setSubmitError("Could not submit right now. Please try again in a moment.");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   const stats: Stat[] = [
@@ -347,13 +372,14 @@ export default function Hero() {
                       fontFamily: "var(--font-mono)",
                     }}
                     aria-label="Claim your free 1 week ads service"
+                    disabled={isSubmitting}
                   >
                     <span
                       className="absolute inset-0 -translate-x-full skew-x-12 bg-white/20 transition-transform duration-500 group-hover:translate-x-full"
                       aria-hidden="true"
                     />
                     <span className="relative flex items-center justify-center gap-2">
-                      Claim My Free Service
+                      {isSubmitting ? "Sending..." : "Claim My Free Service"}
                       <svg
                         className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
                         fill="none"
@@ -365,6 +391,7 @@ export default function Hero() {
                       </svg>
                     </span>
                   </button>
+                  {submitError ? <p className="mt-2 text-xs text-red-500">{submitError}</p> : null}
                 </form>
               </>
             ) : (
