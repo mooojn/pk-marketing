@@ -255,19 +255,26 @@ export default function Hero() {
             {!submitted ? (
               <>
                 <div className="mb-6">
-                  <p
-                    className="text-xs font-semibold uppercase tracking-widest text-[var(--accent-warm)]"
-                    style={{ fontFamily: "var(--font-mono)" }}
-                  >
-                    Free Growth Plan
-                  </p>
                   <h2
-                    className="mt-1 text-2xl font-bold text-[var(--text-primary)]"
+                    className="text-[clamp(1.45rem,2.8vw,2rem)] font-extrabold leading-tight text-[var(--text-primary)]"
                     style={{ fontFamily: "var(--font-display)" }}
                   >
-                    See how many leads you can unlock
+                    Get <span className="text-[var(--accent-warm)]">Free 1 Week Service</span> of Ads
                   </h2>
-                  <p className="mt-1 text-sm text-[var(--text-muted)]">Takes 30 seconds. No sales pressure.</p>
+                  <div className="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-3">
+                    <div className="rounded-2xl border border-[var(--border-subtle)] bg-gradient-to-br from-white to-[var(--bg-secondary)] px-3 py-2.5 shadow-[0_10px_24px_rgba(15,23,42,0.06)]">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.13em] text-[var(--text-primary)]">Meta + Google</p>
+                      <p className="mt-0.5 text-[10px] text-[var(--text-muted)]">Dual-platform launch</p>
+                    </div>
+                    <div className="rounded-2xl border border-[var(--border-subtle)] bg-gradient-to-br from-white to-[var(--bg-secondary)] px-3 py-2.5 shadow-[0_10px_24px_rgba(15,23,42,0.06)]">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.13em] text-[var(--text-primary)]">Daily Tuning</p>
+                      <p className="mt-0.5 text-[10px] text-[var(--text-muted)]">Lower cost, better leads</p>
+                    </div>
+                    <div className="rounded-2xl border border-[var(--accent-warm)]/35 bg-gradient-to-br from-[var(--accent-warm)]/12 to-white px-3 py-2.5 shadow-[0_10px_24px_rgba(212,132,26,0.16)]">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.13em] text-[var(--accent-warm)]">7 Free Days</p>
+                      <p className="mt-0.5 text-[10px] text-[var(--text-primary)]">No service fee in week 1</p>
+                    </div>
+                  </div>
                 </div>
 
                 <form onSubmit={handleSubmit} noValidate aria-label="Lead capture form">
@@ -339,14 +346,14 @@ export default function Hero() {
                       background: "linear-gradient(135deg, var(--accent-warm) 0%, var(--accent-sage) 100%)",
                       fontFamily: "var(--font-mono)",
                     }}
-                    aria-label="Get your free marketing strategy"
+                    aria-label="Claim your free 1 week ads service"
                   >
                     <span
                       className="absolute inset-0 -translate-x-full skew-x-12 bg-white/20 transition-transform duration-500 group-hover:translate-x-full"
                       aria-hidden="true"
                     />
                     <span className="relative flex items-center justify-center gap-2">
-                      Get My Free Growth Plan
+                      Claim My Free Service
                       <svg
                         className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
                         fill="none"
@@ -358,9 +365,6 @@ export default function Hero() {
                       </svg>
                     </span>
                   </button>
-
-                  <p className="mt-3 text-center text-[11px] text-[var(--text-muted)]">No spam. No credit card. Cancel anytime.</p>
-                  <p className="mt-1 text-center text-[11px] font-semibold text-[var(--text-primary)]">7 onboarding slots left this month</p>
                 </form>
               </>
             ) : (
@@ -380,10 +384,10 @@ export default function Hero() {
                   </svg>
                 </div>
                 <h3 className="mb-2 text-xl font-bold text-[var(--text-primary)]" style={{ fontFamily: "var(--font-display)" }}>
-                  You are on the list
+                  Your free 1 week ads service is reserved
                 </h3>
                 <p className="text-sm text-[var(--text-muted)]">
-                  Check your inbox. Your custom plan will arrive within <span className="font-semibold text-[var(--accent-warm)]">48 hours</span>.
+                  Check your inbox. Our team will contact you within <span className="font-semibold text-[var(--accent-warm)]">24 hours</span> to launch.
                 </p>
               </div>
             )}
