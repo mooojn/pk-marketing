@@ -163,25 +163,6 @@ export default function CaseStudies() {
                                     ))}
                                 </div>
 
-                                <button
-                                    type="button"
-                                    className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider transition-all duration-300 group/btn"
-                                    style={{ color: study.color }}
-                                    onClick={(event) => {
-                                        event.stopPropagation();
-                                        setActiveStudy(study);
-                                    }}
-                                >
-                                    <span>Read Case Study</span>
-                                    <svg
-                                        className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                    >
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                    </svg>
-                                </button>
                             </div>
                         </div>
                     ))}
@@ -214,11 +195,11 @@ export default function CaseStudies() {
                         </button>
 
                         <div className="grid lg:grid-cols-2">
-                            <div className="relative min-h-[260px] bg-slate-100">
+                            <div className="relative flex min-h-[260px] items-center justify-center bg-slate-100 p-3 sm:p-4">
                                 <img
                                     src={activeStudy.image}
                                     alt={activeStudy.title}
-                                    className="h-full w-full object-cover"
+                                    className="max-h-[72vh] w-full object-contain"
                                 />
                             </div>
 
