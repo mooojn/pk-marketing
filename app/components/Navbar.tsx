@@ -62,8 +62,12 @@ export default function Navbar() {
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center gap-10">
-                        {navItems.filter(item => item.name !== 'Services' || pathname === '/').map((item) => {
-                            const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href) && item.href !== '/#services');
+                        {navItems.map((item) => {
+                            const isActive = item.name === 'Home'
+                                ? pathname === '/'
+                                : item.name === 'Services'
+                                    ? false
+                                    : pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href) && item.href !== '/#services');
 
                             return (
                                 <Link
@@ -157,8 +161,12 @@ export default function Navbar() {
                             }}
                         >
                             <div className="flex flex-col gap-2">
-                            {navItems.filter(item => item.name !== 'Services' || pathname === '/').map((item) => {
-                                const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href) && item.href !== '/#services');
+                            {navItems.map((item) => {
+                                const isActive = item.name === 'Home'
+                                    ? pathname === '/'
+                                    : item.name === 'Services'
+                                        ? false
+                                        : pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href) && item.href !== '/#services');
 
                                 return (
                                     <Link

@@ -89,7 +89,7 @@ export default function Footer() {
                             {services.map((item, id) => (
                                 <li key={id}>
                                     <a
-                                        href="#services"
+                                        href="/#services"
                                         className="inline-flex items-center gap-2 text-base text-[var(--text-muted)] transition-all duration-300 hover:translate-x-1.5 hover:text-[var(--accent-warm)]"
                                         style={{ fontFamily: "var(--font-display)" }}
                                     >
