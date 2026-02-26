@@ -3,8 +3,9 @@
 import { useEffect, useState } from "react";
 
 interface FormData {
-  email: string;
-  website: string;
+  phone: string;
+  name: string;
+  site: string;
 }
 
 interface Stat {
@@ -14,7 +15,7 @@ interface Stat {
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
-  const [formData, setFormData] = useState<FormData>({ email: "", website: "" });
+  const [formData, setFormData] = useState<FormData>({ phone: "", name: "", site: "" });
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [submitError, setSubmitError] = useState<string>("");
@@ -36,12 +37,10 @@ export default function Hero() {
 
   function validate(): boolean {
     const nextErrors: Partial<FormData> = {};
-    const email = formData.email.trim();
+    const phone = formData.phone.trim();
 
-    if (!email) {
-      nextErrors.email = "Email is required.";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      nextErrors.email = "Enter a valid email address.";
+    if (!phone) {
+      nextErrors.phone = "Phone is required.";
     }
 
     setErrors(nextErrors);
@@ -62,8 +61,9 @@ export default function Hero() {
         body: JSON.stringify({
           formType: "hero",
           source: "Hero Form",
-          email: formData.email.trim(),
-          website: formData.website.trim(),
+          phone: formData.phone.trim(),
+          name: formData.name.trim(),
+          site: formData.site.trim(),
         }),
       });
 
@@ -305,52 +305,73 @@ export default function Hero() {
                 <form onSubmit={handleSubmit} noValidate aria-label="Lead capture form">
                   <div className="mb-4">
                     <label
-                      htmlFor="hero-email"
+                      htmlFor="hero-phone"
                       className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]"
                       style={{ fontFamily: "var(--font-mono)" }}
                     >
-                      Work Email
+                      Phone
                     </label>
                     <input
-                      id="hero-email"
-                      name="email"
-                      type="email"
-                      autoComplete="email"
-                      placeholder="abc@gmail.com"
-                      value={formData.email}
+                      id="hero-phone"
+                      name="phone"
+                      type="tel"
+                      autoComplete="tel"
+                      placeholder="+1 234 567 8901"
+                      value={formData.phone}
                       onChange={handleChange}
-                      aria-invalid={Boolean(errors.email)}
+                      aria-invalid={Boolean(errors.phone)}
                       required
                       aria-required="true"
                       className={`
                         w-full rounded-xl border bg-[var(--bg-secondary)] px-4 py-3.5 text-sm text-[var(--text-primary)]
                         placeholder:text-slate-400 outline-none transition-all duration-200
                         ${
-                          errors.email
+                          errors.phone
                             ? "border-red-400 focus:border-red-500 focus:shadow-[0_0_0_3px_rgba(248,113,113,0.2)]"
                             : "border-[var(--border-subtle)] focus:border-[var(--accent-warm)] focus:shadow-[0_0_0_3px_rgba(119,185,62,0.18)] hover:border-[var(--accent-warm)]/50"
                         }
                       `}
                       style={{ fontFamily: "var(--font-display)" }}
                     />
-                    {errors.email ? <p className="mt-1 text-xs text-red-500">{errors.email}</p> : null}
+                    {errors.phone ? <p className="mt-1 text-xs text-red-500">{errors.phone}</p> : null}
+                  </div>
+
+                  <div className="mb-4">
+                    <label
+                      htmlFor="hero-name"
+                      className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]"
+                      style={{ fontFamily: "var(--font-mono)" }}
+                    >
+                      Name (optional)
+                    </label>
+                    <input
+                      id="hero-name"
+                      name="name"
+                      type="text"
+                      autoComplete="name"
+                      placeholder="John Doe"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="w-full rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)] px-4 py-3.5 text-sm text-[var(--text-primary)] placeholder:text-slate-400 outline-none transition-all duration-200 hover:border-[var(--accent-warm)]/50 focus:border-[var(--accent-warm)] focus:shadow-[0_0_0_3px_rgba(119,185,62,0.18)]"
+                      style={{ fontFamily: "var(--font-display)" }}
+                    />
                   </div>
 
                   <div className="mb-6">
                     <label
-                      htmlFor="hero-website"
+                      htmlFor="hero-site"
                       className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]"
                       style={{ fontFamily: "var(--font-mono)" }}
                     >
-                      Website (optional)
+                      Site (optional)
                     </label>
                     <input
-                      id="hero-website"
-                      name="website"
+                      id="hero-site"
+                      name="site"
                       type="text"
                       autoComplete="url"
                       placeholder="xyz.com"
-                      value={formData.website}
+                      value={formData.site}
                       onChange={handleChange}
                       className="w-full rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)] px-4 py-3.5 text-sm text-[var(--text-primary)] placeholder:text-slate-400 outline-none transition-all duration-200 hover:border-[var(--accent-warm)]/50 focus:border-[var(--accent-warm)] focus:shadow-[0_0_0_3px_rgba(119,185,62,0.18)]"
                       style={{ fontFamily: "var(--font-display)" }}
