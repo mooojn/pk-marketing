@@ -115,25 +115,48 @@ export default function Navbar() {
 
                     {/* Mobile Menu Button */}
                     <button
-                        className="md:hidden p-2 transition-colors duration-300"
+                        className="md:hidden relative w-11 h-11 rounded-xl border transition-all duration-300 flex items-center justify-center"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        style={{ color: 'var(--text-primary)' }}
+                        style={{
+                            color: 'var(--text-primary)',
+                            borderColor: isMobileMenuOpen ? 'var(--accent-warm)' : 'var(--border-subtle)',
+                            background: isMobileMenuOpen ? 'rgba(212, 132, 26, 0.08)' : 'rgba(255, 255, 255, 0.75)',
+                            backdropFilter: 'blur(10px)'
+                        }}
                         aria-label="Toggle menu"
+                        aria-expanded={isMobileMenuOpen}
                     >
-                        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            {isMobileMenuOpen ? (
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                            ) : (
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                            )}
-                        </svg>
+                        <span className="sr-only">Open navigation menu</span>
+                        <span className="relative block w-5 h-4">
+                            <span
+                                className={`absolute left-0 h-0.5 w-5 rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'top-1.5 rotate-45' : 'top-0'}`}
+                                style={{ background: 'currentColor' }}
+                            />
+                            <span
+                                className={`absolute left-0 top-1.5 h-0.5 w-5 rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}
+                                style={{ background: 'currentColor' }}
+                            />
+                            <span
+                                className={`absolute left-0 h-0.5 w-5 rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'top-1.5 -rotate-45' : 'top-3'}`}
+                                style={{ background: 'currentColor' }}
+                            />
+                        </span>
                     </button>
                 </div>
 
                 {/* Mobile Menu */}
                 {isMobileMenuOpen && (
-                    <div className="md:hidden py-6 border-t" style={{ borderColor: 'var(--border-subtle)', background: 'var(--bg-primary)' }}>
-                        <div className="flex flex-col gap-4">
+                    <div className="md:hidden pb-4">
+                        <div
+                            className="mt-2 p-4 rounded-2xl border shadow-xl"
+                            style={{
+                                borderColor: 'var(--border-subtle)',
+                                background: 'rgba(255, 255, 255, 0.96)',
+                                backdropFilter: 'blur(16px)',
+                                boxShadow: '0 24px 45px -24px rgba(15, 23, 42, 0.45)'
+                            }}
+                        >
+                            <div className="flex flex-col gap-2">
                             {navItems.filter(item => item.name !== 'Services' || pathname === '/').map((item) => {
                                 const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href) && item.href !== '/#services');
 
@@ -141,10 +164,11 @@ export default function Navbar() {
                                     <Link
                                         key={item.name}
                                         href={item.href}
-                                        className="text-sm tracking-wider uppercase py-2 transition-all duration-300"
+                                        className="text-sm tracking-wider uppercase px-4 py-3 rounded-xl transition-all duration-300"
                                         style={{
                                             fontFamily: 'var(--font-mono)',
-                                            color: isActive ? 'var(--accent-warm)' : 'var(--text-muted)'
+                                            color: isActive ? 'var(--accent-warm)' : 'var(--text-muted)',
+                                            background: isActive ? 'rgba(212, 132, 26, 0.1)' : 'transparent'
                                         }}
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
@@ -154,10 +178,10 @@ export default function Navbar() {
                             })}
                             <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
                                 <button
-                                    className="mt-4 px-6 py-3 text-xs tracking-[0.15em] uppercase font-semibold w-full transition-all duration-300"
+                                    className="mt-3 px-6 py-3 text-xs tracking-[0.15em] uppercase font-semibold w-full transition-all duration-300 rounded-xl"
                                     style={{
                                         fontFamily: 'var(--font-mono)',
-                                        background: 'var(--accent-warm)',
+                                        background: 'linear-gradient(135deg, var(--accent-warm), #f59e0b)',
                                         color: '#FFFFFF',
                                     }}
                                 >
@@ -165,6 +189,7 @@ export default function Navbar() {
                                 </button>
                             </Link>
                         </div>
+                    </div>
                     </div>
                 )}
             </div>

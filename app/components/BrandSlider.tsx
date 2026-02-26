@@ -33,10 +33,11 @@ const BrandSlider = () => {
                 <div className="flex items-center gap-4">
                     <span className="h-px flex-1 bg-[var(--border-subtle)]" />
                     <h3
-                        className="text-sm md:text-[15px] font-semibold tracking-[0.08em] uppercase"
+                        className="text-base md:text-lg font-bold tracking-[0.1em] uppercase px-3 py-1 rounded-full"
                         style={{
                             fontFamily: 'var(--font-display)',
-                            color: 'var(--text-secondary)'
+                            color: 'var(--text-primary)',
+                            background: 'rgba(212, 132, 26, 0.08)'
                         }}
                     >
                         Our Clients

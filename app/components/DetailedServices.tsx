@@ -8,7 +8,12 @@ const DetailedServices = () => {
     const baseCardBorder = "rgba(15, 23, 42, 0.1)";
     const baseCardShadow = "0 14px 34px -20px rgba(15, 23, 42, 0.32), 0 1px 0 rgba(255,255,255,0.9) inset";
 
-    
+    const scrollToContactForm = () => {
+        const contactSection = document.getElementById('contact-form');
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
 
     return (
         <section
@@ -61,7 +66,7 @@ const DetailedServices = () => {
                                 color: 'var(--text-primary)'
                             }}
                         >
-                            Our 360° <span style={{ color: 'var(--accent-warm)' }}>Marketing Services</span>
+                            Our 360&deg; <span style={{ color: 'var(--accent-warm)' }}>Marketing Services</span>
                         </h2>
                         <p
                             className="text-base md:text-lg lg:text-xl leading-relaxed max-w-2xl"
@@ -80,7 +85,7 @@ const DetailedServices = () => {
                     {services.map((item, index) => (
                         <div
                             key={index}
-                            className="group relative p-8 transition-all duration-500 rounded-2xl"
+                            className="group relative p-8 transition-all duration-500 rounded-2xl cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
                             style={{
                                 background: hoveredIndex === index
                                     ? "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(248,250,252,0.98) 100%)"
@@ -94,6 +99,15 @@ const DetailedServices = () => {
                             }}
                             onMouseEnter={() => setHoveredIndex(index)}
                             onMouseLeave={() => setHoveredIndex(null)}
+                            onClick={scrollToContactForm}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                    e.preventDefault();
+                                    scrollToContactForm();
+                                }
+                            }}
+                            role="button"
+                            tabIndex={0}
                         >
                             <div
                                 className="w-12 h-12 mb-6 rounded-lg flex items-center justify-center transition-colors duration-300"
@@ -126,15 +140,21 @@ const DetailedServices = () => {
                             </p>
 
                             {/* Arrow Link - Similar to other sections but styled like Pricing */}
-                            <div
+                            <button
+                                type="button"
                                 className="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase transition-all duration-300"
                                 style={{
                                     fontFamily: 'var(--font-mono)',
                                     color: item.accent,
-                                    opacity: hoveredIndex === index ? 1 : 0.7
+                                    opacity: hoveredIndex === index ? 1 : 0.7,
+                                    background: 'transparent'
+                                }}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    scrollToContactForm();
                                 }}
                             >
-                                Explore
+                                Get Service
                                 <svg
                                     className="w-4 h-4 transition-transform duration-300"
                                     style={{ transform: hoveredIndex === index ? 'translateX(4px)' : 'translateX(0)' }}
@@ -144,7 +164,7 @@ const DetailedServices = () => {
                                 >
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>
-                            </div>
+                            </button>
                         </div>
                     ))}
                 </div>
