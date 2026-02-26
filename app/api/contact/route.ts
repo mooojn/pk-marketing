@@ -16,6 +16,7 @@ type ContactPayload = {
 
 export async function POST(request: Request) {
   try {
+    
     const body = (await request.json()) as ContactPayload;
 
     const resendApiKey = process.env.RESEND_API_KEY;
