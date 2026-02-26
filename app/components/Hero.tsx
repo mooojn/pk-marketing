@@ -316,7 +316,7 @@ export default function Hero() {
                       name="phone"
                       type="tel"
                       autoComplete="tel"
-                      placeholder="+1 234 567 8901"
+                      placeholder="+92 323 0000000"
                       value={formData.phone}
                       onChange={handleChange}
                       aria-invalid={Boolean(errors.phone)}
@@ -349,7 +349,7 @@ export default function Hero() {
                       name="name"
                       type="text"
                       autoComplete="name"
-                      placeholder="John Doe"
+                      placeholder="Kinza Fatima"
                       value={formData.name}
                       onChange={handleChange}
                       className="w-full rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)] px-4 py-3.5 text-sm text-[var(--text-primary)] placeholder:text-slate-400 outline-none transition-all duration-200 hover:border-[var(--accent-warm)]/50 focus:border-[var(--accent-warm)] focus:shadow-[0_0_0_3px_rgba(119,185,62,0.18)]"
