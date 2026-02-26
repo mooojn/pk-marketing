@@ -5,6 +5,9 @@ type ContactPayload = {
   source?: string;
   email?: string;
   website?: string;
+  phone?: string;
+  name?: string;
+  site?: string;
   fullName?: string;
   phoneNumber?: string;
   selectedPackage?: string;
@@ -31,14 +34,23 @@ export async function POST(request: Request) {
     let text = "";
 
     if (formType === "hero") {
+      const phone = body.phone?.trim() || "";
+      const name = body.name?.trim() || "";
+      const site = body.site?.trim() || "";
+
+      if (!phone) {
+        return NextResponse.json({ error: "Phone is required." }, { status: 400 });
+      }
+
       subject = "New Hero Lead Submission";
       html = `
         <h2>New Hero Lead</h2>
         <p><strong>Source:</strong> ${source}</p>
-        <p><strong>Email:</strong> ${body.email || "N/A"}</p>
-        <p><strong>Website:</strong> ${body.website || "N/A"}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Name:</strong> ${name || "N/A"}</p>
+        <p><strong>Site:</strong> ${site || "N/A"}</p>
       `;
-      text = `New Hero Lead\nSource: ${source}\nEmail: ${body.email || "N/A"}\nWebsite: ${body.website || "N/A"}`;
+      text = `New Hero Lead\nSource: ${source}\nPhone: ${phone}\nName: ${name || "N/A"}\nSite: ${site || "N/A"}`;
     } else {
       subject = "New Contact Form Submission";
       html = `
@@ -69,7 +81,10 @@ export async function POST(request: Request) {
 
     if (!resendResponse.ok) {
       const errorBody = await resendResponse.text();
-      return NextResponse.json({ error: `Resend failed: ${errorBody}` }, { status: 502 });
+      return NextResponse.json(
+        { error: "Resend failed", details: errorBody },
+        { status: resendResponse.status || 502 }
+      );
     }
 
     return NextResponse.json({ ok: true });

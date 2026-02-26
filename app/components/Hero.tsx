@@ -68,12 +68,20 @@ export default function Hero() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to submit");
+        const errorPayload = (await response.json().catch(() => null)) as
+          | { error?: string; details?: string }
+          | null;
+        const detail = errorPayload?.details ? ` ${errorPayload.details}` : "";
+        throw new Error(errorPayload?.error ? `${errorPayload.error}.${detail}` : "Failed to submit.");
       }
 
       setSubmitted(true);
-    } catch {
-      setSubmitError("Could not submit right now. Please try again in a moment.");
+    } catch (err) {
+      setSubmitError(
+        err instanceof Error && err.message
+          ? err.message
+          : "Could not submit right now. Please try again in a moment."
+      );
     } finally {
       setIsSubmitting(false);
     }
