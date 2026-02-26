@@ -61,7 +61,7 @@ export default function Hero() {
     { number: "4.9/5", label: "Client Rating" },
   ];
 
-  const proofItems: string[] = ["No long-term contracts", "Weekly performance reporting"];
+  // const proofItems: string[] = ["No long-term contracts", "Weekly performance reporting"];
 
   const platforms = [
     { name: "Google", key: "google" },
@@ -136,7 +136,7 @@ export default function Hero() {
             and prove ROI weekly. <span className="font-semibold text-[var(--text-primary)]">Get your free growth plan in 48 hours.</span>
           </p>
 
-          <ul className="mb-8 grid w-full max-w-xl gap-2.5 sm:grid-cols-2">
+          {/* <ul className="mb-8 grid w-full max-w-xl gap-2.5 sm:grid-cols-2">
             {proofItems.map((item) => (
               <li key={item} className="flex items-start gap-2.5 text-sm text-[var(--text-muted)]">
                 <span
@@ -148,7 +148,7 @@ export default function Hero() {
                 <span>{item}</span>
               </li>
             ))}
-          </ul>
+          </ul> */}
 
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex items-center gap-2">

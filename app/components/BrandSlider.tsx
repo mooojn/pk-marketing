@@ -12,7 +12,6 @@ const BrandSlider = () => {
         "smartmoveimmigration.co.uk",
         "acjaccountants.com",
         "bagsvilla.pk",
-        "adzomarketing.com",
         "fashacosmetics.com",
         "digitalbazzar.shop",
         "bookkeepingsavvy.co",
