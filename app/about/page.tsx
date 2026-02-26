@@ -145,7 +145,7 @@ export default function About() {
                                         className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-105"
                                         style={{ background: "linear-gradient(135deg, rgba(212,132,26,0.2), rgba(212,132,26,0.06))" }}
                                     >
-                                        <Icon className="h-6 w-6" style={{ color: "var(--accent-warm)" }} />
+                                        <Icon className="h-6 w-6 text-[var(--accent-warm)]" />
                                     </div>
                                     <h3 className="mb-2 text-xl font-bold" style={{ fontFamily: "var(--font-display)", color: "var(--text-primary)" }}>
                                         {value.title}
