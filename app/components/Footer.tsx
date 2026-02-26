@@ -108,14 +108,18 @@ export default function Footer() {
                             Quick Links
                         </h4>
                         <ul className="space-y-3">
-                            {["About Us", "Our Work", "Case Studies", "Contact"].map((item) => (
-                                <li key={item}>
+                            {[
+                                { label: "Home", href: "/" },
+                                { label: "About", href: "/about" },
+                                { label: "Contact", href: "/contact" },
+                            ].map((item) => (
+                                <li key={item.href}>
                                     <a
-                                        href="#"
+                                        href={item.href}
                                         className="inline-flex items-center text-base text-[var(--text-muted)] transition-all duration-300 hover:translate-x-1.5 hover:text-[var(--accent-warm)]"
                                         style={{ fontFamily: "var(--font-display)" }}
                                     >
-                                        {item}
+                                        {item.label}
                                     </a>
                                 </li>
                             ))}
