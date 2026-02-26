@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import ContactForm from "../components/ContactForm";
+import Footer from "../components/Footer";
 
 export default function Contact() {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -127,22 +128,7 @@ export default function Contact() {
                 </div>
             </section>
 
-            <footer className="py-8" style={{ background: "var(--bg-dark)" }}>
-                <div className="mx-auto max-w-7xl px-6 lg:px-12">
-                    <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-                        <p className="text-sm" style={{ fontFamily: "var(--font-display)", color: "var(--text-light-muted)" }}>
-                            &copy; {new Date().getFullYear()} AdzoMarketing. All rights reserved.
-                        </p>
-                        <div className="flex items-center gap-6">
-                            {["Privacy Policy", "Terms of Service"].map((item) => (
-                                <a key={item} href="#" className="text-sm transition-all duration-300" style={{ fontFamily: "var(--font-display)", color: "var(--text-light-muted)" }}>
-                                    {item}
-                                </a>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <Footer />
         </div>
     );
 }

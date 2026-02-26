@@ -16,11 +16,8 @@ export default function FloatingWhatsApp() {
         style={{ background: "rgba(37, 211, 102, 0.45)" }}
         aria-hidden="true"
       />
-      <span className="flex items-center gap-2 rounded-full border border-white/30 bg-gradient-to-br from-[#25D366] to-[#128C7E] px-4 py-3 text-white shadow-[0_12px_30px_rgba(18,140,126,0.4)] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-[0_18px_36px_rgba(18,140,126,0.48)]">
+      <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/30 bg-gradient-to-br from-[#25D366] to-[#128C7E] text-white shadow-[0_12px_30px_rgba(18,140,126,0.4)] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-[0_18px_36px_rgba(18,140,126,0.48)]">
         <FaWhatsapp className="h-5 w-5 shrink-0" />
-        <span className="hidden text-[11px] font-bold uppercase tracking-[0.12em] sm:block">
-          WhatsApp
-        </span>
       </span>
     </a>
   );

@@ -25,7 +25,7 @@ export default function Footer() {
         <footer
             className="relative overflow-hidden border-t border-[var(--border-subtle)] pt-20 pb-8"
             style={{
-                background: "linear-gradient(180deg, #ffffff 0%, #f8fafc 42%, #f1f5f9 100%)",
+                background: "linear-gradient(180deg, #e8eef5 0%, #dce5ef 45%, #c7d4e4 100%)",
             }}
         >
             <div
@@ -42,8 +42,8 @@ export default function Footer() {
             <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
                 <div className="mb-14 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
                     <div className="lg:col-span-1">
-                        <a href="#" className="mb-6 inline-flex items-center">
-                            <img src="/bg-logo.jpeg" alt="Adzzly Logo" className="h-24 w-auto object-contain" />
+                        <a href="/" className="mb-6 inline-flex items-center">
+                            <img src="/logo.png" alt="Adzzly Logo" className="h-16 md:h-20 w-auto max-w-[220px] object-contain" />
                         </a>
 
                         <p
@@ -142,27 +142,6 @@ export default function Footer() {
                                 <span style={{ fontFamily: "var(--font-display)", color: "var(--text-muted)" }}>+92 370 6037115</span>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div className="mb-8 h-px w-full bg-[var(--border-subtle)]" />
-
-                <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-                    <p className="text-sm text-[var(--text-muted)]" style={{ fontFamily: "var(--font-display)" }}>
-                        (c) {new Date().getFullYear()} Adzo. All rights reserved.
-                    </p>
-
-                    <div className="flex items-center gap-6">
-                        {["Privacy Policy", "Terms of Service", "Cookies"].map((item) => (
-                            <a
-                                key={item}
-                                href="#"
-                                className="text-sm text-[var(--text-muted)] transition-colors duration-300 hover:text-[var(--accent-warm)]"
-                                style={{ fontFamily: "var(--font-display)" }}
-                            >
-                                {item}
-                            </a>
-                        ))}
                     </div>
                 </div>
             </div>
