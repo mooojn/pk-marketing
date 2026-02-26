@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, Manrope } from "next/font/google";
 import Navbar from "./components/Navbar";
+import FloatingWhatsApp from "./components/FloatingWhatsApp";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -33,6 +34,7 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
+        <FloatingWhatsApp />
       </body>
     </html>
   );
