@@ -37,7 +37,8 @@ const BrandSlider = () => {
                         style={{
                             fontFamily: 'var(--font-display)',
                             color: 'var(--text-primary)',
-                            background: 'rgba(212, 132, 26, 0.08)'
+                            background: 'linear-gradient(135deg, rgba(212, 132, 26, 0.14), rgba(212, 132, 26, 0.05))',
+                            border: '1px solid var(--border-subtle)'
                         }}
                     >
                         Our Clients

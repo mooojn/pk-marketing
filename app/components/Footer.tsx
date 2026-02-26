@@ -1,10 +1,24 @@
 "use client";
 import { services } from "../data/services";
+import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 export default function Footer() {
     const socialLinks = [
-        { name: "Facebook", icon: "M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" },
-        { name: "Instagram", icon: "M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01M6.5 2h11A4.5 4.5 0 0122 6.5v11a4.5 4.5 0 01-4.5 4.5h-11A4.5 4.5 0 012 17.5v-11A4.5 4.5 0 016.5 2z" },
+        {
+            name: "Facebook",
+            href: "https://www.facebook.com/profile.php?id=61588141742860",
+            icon: FaFacebookF
+        },
+        {
+            name: "Instagram",
+            href: "https://www.instagram.com/adzo.marketing?",
+            icon: FaInstagram
+        },
+        {
+            name: "WhatsApp",
+            href: "https://wa.me/923706037115",
+            icon: FaWhatsapp
+        }
     ];
 
     return (
@@ -44,13 +58,13 @@ export default function Footer() {
                             {socialLinks.map((social) => (
                                 <a
                                     key={social.name}
-                                    href="#"
+                                    href={social.href}
                                     aria-label={social.name}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border-subtle)] bg-white/90 text-[var(--text-muted)] shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--accent-warm)] hover:bg-[var(--accent-warm)] hover:text-white"
                                 >
-                                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                                        <path strokeLinecap="round" strokeLinejoin="round" d={social.icon} />
-                                    </svg>
+                                    <social.icon className="h-5 w-5" />
                                 </a>
                             ))}
                         </div>
@@ -125,7 +139,7 @@ export default function Footer() {
                                 <svg className="mt-1 h-5 w-5 shrink-0 text-[var(--accent-warm)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                 </svg>
-                                <span style={{ fontFamily: "var(--font-display)", color: "var(--text-muted)" }}>+92 300 1234567</span>
+                                <span style={{ fontFamily: "var(--font-display)", color: "var(--text-muted)" }}>+92 370 6037115</span>
                             </div>
                         </div>
                     </div>
