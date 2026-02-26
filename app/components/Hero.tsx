@@ -316,7 +316,7 @@ export default function Hero() {
                       name="email"
                       type="email"
                       autoComplete="email"
-                      placeholder="info@adzomarketing.com"
+                      placeholder="abc@gmail.com"
                       value={formData.email}
                       onChange={handleChange}
                       aria-invalid={Boolean(errors.email)}
@@ -349,7 +349,7 @@ export default function Hero() {
                       name="website"
                       type="text"
                       autoComplete="url"
-                      placeholder="adzomarketing.com"
+                      placeholder="xyz.com"
                       value={formData.website}
                       onChange={handleChange}
                       className="w-full rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)] px-4 py-3.5 text-sm text-[var(--text-primary)] placeholder:text-slate-400 outline-none transition-all duration-200 hover:border-[var(--accent-warm)]/50 focus:border-[var(--accent-warm)] focus:shadow-[0_0_0_3px_rgba(119,185,62,0.18)]"
