@@ -25,7 +25,7 @@ export default function Footer() {
         <footer
             className="relative overflow-hidden border-t border-[var(--border-subtle)] pt-20 pb-8"
             style={{
-                background: "linear-gradient(180deg, #e8eef5 0%, #dce5ef 45%, #c7d4e4 100%)",
+                background: "linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 52%, #eef5fb 100%)",
             }}
         >
             <div
@@ -36,6 +36,14 @@ export default function Footer() {
             <div
                 className="pointer-events-none absolute -bottom-24 right-0 h-72 w-72 rounded-full blur-3xl"
                 style={{ background: "radial-gradient(circle, rgba(244,114,182,0.14) 0%, transparent 75%)" }}
+                aria-hidden="true"
+            />
+            <div
+                className="pointer-events-none absolute inset-0 opacity-30"
+                style={{
+                    backgroundImage:
+                        "linear-gradient(120deg, rgba(255,255,255,0.55) 0%, transparent 45%, rgba(119,185,62,0.05) 100%)",
+                }}
                 aria-hidden="true"
             />
 
