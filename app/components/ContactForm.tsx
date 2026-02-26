@@ -104,7 +104,7 @@ export default function ContactForm() {
                                     <label className="block text-sm font-bold mb-2 uppercase tracking-wide text-gray-700">Full Name</label>
                                     <input
                                         type="text"
-                                        placeholder="John Doe"
+                                        placeholder="Ayesha Khan"
                                         className="w-full px-4 py-4 rounded-xl text-base outline-none transition-all duration-300 placeholder:text-gray-400 border border-gray-200 focus:border-transparent focus:ring-2"
                                         style={{
                                             background: '#F9FAFB', // Light gray background for contrast
@@ -117,7 +117,7 @@ export default function ContactForm() {
                                     <label className="block text-sm font-bold mb-2 uppercase tracking-wide text-gray-700">Phone Number</label>
                                     <input
                                         type="tel"
-                                        placeholder="+92 300 0000000"
+                                        placeholder="+92 321 4567890"
                                         className="w-full px-4 py-4 rounded-xl text-base outline-none transition-all duration-300 placeholder:text-gray-400 border border-gray-200 focus:border-transparent focus:ring-2"
                                         style={{
                                             background: '#F9FAFB', // Light gray background for contrast
