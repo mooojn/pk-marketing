@@ -6,6 +6,13 @@ const Pricing = () => {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
     const baseCardBorder = "rgba(15, 23, 42, 0.1)";
     const baseCardShadow = "0 14px 34px -20px rgba(15, 23, 42, 0.32), 0 1px 0 rgba(255,255,255,0.9) inset";
+    const whatsappNumber = "923706037115";
+
+    const openWhatsApp = (planName: string, planPrice: string) => {
+        const message = `Hi Adzzly, I'm interested in the ${planName} package (${planPrice}/month). Please share more details.`;
+        const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        window.open(url, "_blank", "noopener,noreferrer");
+    };
 
     const plans = [
         {
@@ -153,6 +160,7 @@ const Pricing = () => {
                             }}
                             onMouseEnter={() => setHoveredIndex(index)}
                             onMouseLeave={() => setHoveredIndex(null)}
+                            onClick={() => openWhatsApp(plan.name, plan.price)}
                         >
                             {plan.popular && (
                                 <div
@@ -231,12 +239,17 @@ const Pricing = () => {
 
                             {/* CTA Button */}
                             <button
+                                type="button"
                                 className="w-full py-4 text-xs tracking-[0.2em] uppercase font-semibold transition-all duration-300 relative overflow-hidden group/btn"
                                 style={{
                                     fontFamily: 'var(--font-mono)',
                                     background: 'transparent',
                                     color: plan.accent,
                                     border: `1px solid ${plan.accent}`
+                                }}
+                                onClick={(event) => {
+                                    event.stopPropagation();
+                                    openWhatsApp(plan.name, plan.price);
                                 }}
                             >
                                 <span className="relative z-10 group-hover/btn:text-white transition-colors duration-300">
