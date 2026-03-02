@@ -3,7 +3,7 @@ import { FaMeta } from "react-icons/fa6";
 
 export const services = [
     {
-        title: "Meta Ads Management",
+        title: "Meta Ads",
         description: "Data-driven ad campaigns on Facebook and Instagram to scale ROI.",
         icon: (
             <FaMeta className="w-6 h-6" />
