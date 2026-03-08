@@ -202,51 +202,60 @@ const Pricing = () => {
                 </div>
 
                 {/* Service Toggle */}
-                <div className="mb-8 lg:mb-10 flex justify-center">
-                    <div
-                        className="relative grid grid-cols-2 p-1.5 rounded-2xl w-full max-w-md"
-                        style={{
-                            border: '1px solid rgba(15, 23, 42, 0.14)',
-                            background: 'linear-gradient(140deg, rgba(255,255,255,0.9) 0%, rgba(241,245,249,0.8) 100%)',
-                            backdropFilter: 'blur(10px)',
-                            boxShadow: '0 18px 40px -28px rgba(15, 23, 42, 0.65), inset 0 1px 0 rgba(255,255,255,0.9)'
+                <div className="mb-10 lg:mb-12 flex justify-center">
+                    <button
+                        type="button"
+                        className="flex items-center gap-4 cursor-pointer group"
+                        onClick={() => {
+                            setActiveService(prev => prev === 'meta' ? 'google' : 'meta');
+                            setHoveredIndex(null);
                         }}
                     >
-                        <div
-                            className="absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] rounded-xl transition-all duration-500 ease-out"
+                        <span
+                            className="text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300"
                             style={{
-                                left: activeService === 'meta' ? '6px' : 'calc(50% + 2px)',
-                                background: 'linear-gradient(135deg, var(--accent-warm) 0%, var(--accent-sage) 100%)',
-                                boxShadow: '0 12px 24px -14px rgba(15, 23, 42, 0.7)'
+                                fontFamily: 'var(--font-mono)',
+                                color: activeService === 'meta' ? 'var(--text-primary)' : 'var(--text-muted)',
+                                opacity: activeService === 'meta' ? 1 : 0.5
                             }}
-                        />
+                        >
+                            Meta Ads
+                        </span>
 
-                        {([
-                            { key: 'meta', label: 'Meta Ads' },
-                            { key: 'google', label: 'Google Ads' }
-                        ] as const).map((service) => {
-                            const isActive = activeService === service.key;
+                        {/* Toggle Track */}
+                        <div
+                            className="relative w-14 h-8 rounded-full transition-colors duration-400 shrink-0"
+                            style={{
+                                background: activeService === 'meta'
+                                    ? 'var(--accent-navy)'
+                                    : 'var(--accent-warm)',
+                                boxShadow: activeService === 'meta'
+                                    ? '0 2px 10px rgba(30, 41, 59, 0.4), inset 0 1px 2px rgba(0,0,0,0.15)'
+                                    : '0 2px 10px rgba(119, 185, 62, 0.4), inset 0 1px 2px rgba(0,0,0,0.1)'
+                            }}
+                        >
+                            {/* Toggle Knob */}
+                            <div
+                                className="absolute top-1 w-6 h-6 rounded-full transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
+                                style={{
+                                    left: activeService === 'meta' ? '4px' : 'calc(100% - 28px)',
+                                    background: '#fff',
+                                    boxShadow: '0 1px 4px rgba(15, 23, 42, 0.25)'
+                                }}
+                            />
+                        </div>
 
-                            return (
-                                <button
-                                    key={service.key}
-                                    type="button"
-                                    className="relative z-10 px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300"
-                                    style={{
-                                        fontFamily: 'var(--font-mono)',
-                                        color: isActive ? '#ffffff' : 'var(--text-primary)',
-                                        textShadow: isActive ? '0 1px 0 rgba(15, 23, 42, 0.2)' : 'none'
-                                    }}
-                                    onClick={() => {
-                                        setActiveService(service.key);
-                                        setHoveredIndex(null);
-                                    }}
-                                >
-                                    {service.label}
-                                </button>
-                            );
-                        })}
-                    </div>
+                        <span
+                            className="text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300"
+                            style={{
+                                fontFamily: 'var(--font-mono)',
+                                color: activeService === 'google' ? 'var(--text-primary)' : 'var(--text-muted)',
+                                opacity: activeService === 'google' ? 1 : 0.5
+                            }}
+                        >
+                            Google Ads
+                        </span>
+                    </button>
                 </div>
 
                 {/* Pricing Cards */}
