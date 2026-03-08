@@ -198,14 +198,14 @@ export default function Hero() {
                   </svg>
                 ))}
               </div>
-              <span className="text-sm font-semibold text-[var(--text-primary)]">4.9/5</span>
+              <span className="text-sm font-semibold text-[var(--text-primary)]">{stats[3].number}/5</span>
               <span className="text-xs text-[var(--text-muted)]">from clients</span>
             </div>
 
             <div className="hidden h-4 w-px bg-[var(--border-subtle)] sm:block" aria-hidden="true" />
 
             <p className="text-sm text-[var(--text-muted)]">
-              <span className="font-bold text-[var(--text-primary)]">50+</span> brands scaled
+              <span className="font-bold text-[var(--text-primary)]">{stats[0].number}</span> brands scaled
             </p>
 
             <a
